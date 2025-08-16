@@ -3,89 +3,77 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SponsorWins — Prototype v3 (Mock Style)</title>
+<title>SponsorWins — Bid. Win. Sponsor the Game.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#050a16; --bg2:#0a1430; --ring:#1b3466; --panel:#0d1f41;
-  --gold:#f5c518; --gold2:#ffe082; --ink:#eaf1ff; --muted:#9fb0cc; --ok:#17d3a5; --danger:#ff5a7a;
+  --gold:#f5c518; --gold2:#ffe082; --ink:#eaf1ff; --muted:#9fb0cc; --ok:#17d3a5;
   --edge: rgba(255,255,255,.08);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:
-  radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #060c18 100%),
-  radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.12), transparent 62%);
-color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+html,body{
+  margin:0;padding:0;background:
+    radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #060c18 100%),
+    radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.12), transparent 62%);
+  color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+}
 
-/* Header / scoreboard strip */
-.board{position:sticky;top:0;z-index:80;border-bottom:1px solid #0e2045;
+/* Header */
+.board{position:sticky;top:0;z-index:60;border-bottom:1px solid #0e2045;
   background:linear-gradient(180deg,#0a1430 0%, #07142b 100%); box-shadow:0 20px 60px rgba(0,0,0,.55)}
 .board-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:14px}
-.logo{width:66px;height:66px}
-.titles h1{margin:0;font-size:19px;letter-spacing:.24em}
+.logo{width:64px;height:64px}
+.titles h1{margin:0;font-size:18px;letter-spacing:.24em}
 .titles p{margin:4px 0 0;color:var(--muted);font-size:13px}
 .pills{display:flex;gap:8px;flex-wrap:wrap}
 .pill{padding:8px 13px;border-radius:999px;border:1px solid var(--ring);color:var(--muted);background:rgba(16,34,70,.55);cursor:pointer;transition:.2s}
 .pill:hover{border-color:#2b4f9e}.pill.active{background:var(--gold);color:#0b0b0b;border-color:var(--gold)}
 
-/* Hero w/ light rays */
+/* Wrapper */
 .wrap{max-width:1240px;margin:0 auto;padding:20px}
-.hero{position:relative;overflow:hidden;border:1px solid #122a56;border-radius:22px;padding:28px 26px 30px;
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border:1px solid #122a56;border-radius:24px;padding:38px 26px 34px;text-align:center;
   background:
     radial-gradient(1000px 280px at 50% -14%, rgba(96,136,255,.28), transparent 70%),
-    linear-gradient(180deg, rgba(245,197,24,.14), rgba(245,197,24,0) 42%),
+    linear-gradient(180deg, rgba(245,197,24,.10), rgba(245,197,24,0) 40%),
     linear-gradient(180deg, var(--bg2), transparent)}
 .hero::before{content:"";position:absolute;inset:-6% -18% auto -18%;height:250px;
   background:
     radial-gradient(130px 60px at 16% 28%, rgba(255,255,255,.22), transparent 60%),
     radial-gradient(110px 50px at 84% 18%, rgba(255,255,255,.15), transparent 60%);
   filter:blur(2px);opacity:.7;pointer-events:none}
-.hero h2{margin:0 0 6px 0;font-size:28px}
-.hero p{margin:0 0 12px;color:var(--muted);max-width:860px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--ring);background:#0e1f41;color:var(--ink);cursor:pointer}
-.btn-primary{background:linear-gradient(180deg,var(--gold),#e1b312);color:#0b0b0b;border-color:var(--gold);font-weight:900;box-shadow:0 12px 32px rgba(245,197,24,.42)}
+.hero h2{margin:0 0 8px 0;font-size:34px}
+.hero p{margin:0 0 16px;color:var(--muted);font-size:16px}
+.cta{display:inline-block;margin-top:8px;padding:12px 18px;border-radius:12px;border:1px solid var(--gold);
+  background:linear-gradient(180deg,var(--gold),#e1b312);color:#0b0b0b;font-weight:900;box-shadow:0 12px 32px rgba(245,197,24,.42);text-decoration:none}
 
-/* Controls row */
-.controls{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
+/* Controls */
+.controls{display:grid;grid-template-columns:repeat(4,1fr) 1fr;gap:10px;margin-top:18px}
 .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
 select,input[type="search"]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--ring);background:#0d1f41;color:var(--ink)}
 select:focus,input:focus{outline:2px solid #2b4f9e}
 
-/* Grid & cards */
-.grid{margin-top:16px;border:1px solid #122a56;border-radius:22px;background:linear-gradient(180deg,#0c1836,#09132a)}
+/* Grid */
+.grid{margin-top:18px;border:1px solid #122a56;border-radius:22px;background:linear-gradient(180deg,#0c1836,#09132a)}
 .grid-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #122a56}
 .grid-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:14px}
-.card{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--edge);box-shadow:0 12px 34px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.02)}
-.card:after{content:"";position:absolute;inset:-2px;-webkit-mask:linear-gradient(white,transparent 44%);mask:linear-gradient(white,transparent 44%);border-radius:20px;background:linear-gradient(90deg,rgba(245,197,24,.42),rgba(89,153,255,.42),rgba(245,197,24,.42));filter:blur(16px);opacity:.32}
-.card .thumb{height:160px}
-.card .thumb svg{display:block;width:100%;height:100%}
-.meta{padding:12px 14px;display:grid;gap:9px}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#0a0a0a;background:var(--gold);padding:4px 8px;border-radius:999px;font-weight:900;width:max-content}
-.row{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px;align-items:center}
-.team{display:flex;align-items:center;gap:10px}
-.logo-crest{width:30px;height:30px;display:inline-block}
-.asset{color:#dbe7ff}
-.price{font-weight:900;color:#eef4ff}
-.cta{margin:8px 14px 14px;background:#0d2148;border:1px solid #1a396f;color:#dce6ff;padding:10px 12px;border-radius:12px;cursor:pointer;text-align:center;text-decoration:none}
-.cta:hover{border-color:#2b4f9e}
-.loadmore{display:block;margin:6px auto 18px;padding:10px 16px;border-radius:12px;border:1px solid var(--ring);background:#0e1f41;color:#eaf1ff;cursor:pointer}
 
-/* Modal (accessible) */
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:90}
-.modal{width:min(760px,92vw);background:linear-gradient(180deg,#0d1f41,#0a1430);border:1px solid #163061;border-radius:16px;box-shadow:0 30px 100px rgba(0,0,0,.55);overflow:hidden}
-.modal-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #163061}
-.modal-body{padding:14px}
-.modal-close{background:transparent;border:1px solid #2b4f9e;color:#cfe1ff;border-radius:8px;padding:6px 10px;cursor:pointer}
-.modal-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
-.notice{display:flex;gap:10px;align-items:flex-start;background:#0b1734;border:1px dashed #2b4f9e;border-radius:12px;padding:10px;margin:10px 0;color:#cfe1ff}
-.notice .dot{width:10px;height:10px;border-radius:999px;background:var(--danger);margin-top:4px}
-.bidlist{display:grid;gap:8px;font-size:14px;color:#cfe1ff}
-.bid{display:flex;justify-content:space-between;background:#0b1734;border:1px solid #183261;border-radius:10px;padding:8px 10px}
+/* Card */
+.card{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--edge);box-shadow:0 12px 34px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.02)}
+.card .thumb{display:grid;place-items:center;height:170px;border-bottom:1px solid #183261;background:linear-gradient(180deg, rgba(51,94,234,.14), transparent)}
+.card .thumb svg{width:92px;height:92px}
+.meta{padding:12px 14px;display:grid;gap:9px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#0a0a0a;background:var(--gold);padding:4px 8px;border-radius:999px;font-weight:900;width:max-content;margin-inline:auto}
+.asset{color:#ffe082;font-weight:600}
+.price{font-weight:900}
+.cta-row{display:flex;justify-content:center;padding:0 14px 14px}
+.view{display:inline-block;background:#0d2148;border:1px solid #1a396f;color:#dce6ff;padding:10px 12px;border-radius:12px;text-decoration:none}
 
 /* Ticker */
-.ticker-wrap{position:relative;border-top:2px solid #122a56;border-bottom:2px solid #122a56;background:#0a142b;margin-top:16px}
+.ticker-wrap{position:relative;border-top:2px solid #122a56;border-bottom:2px solid #122a56;background:#0a142b;margin-top:18px}
 .ticker-title{position:absolute;left:16px;top:-12px;background:#0a142b;color:var(--muted);font-size:12px;padding:2px 8px;border:1px solid var(--ring);border-radius:6px;letter-spacing:.12em}
 .ticker-viewport{overflow:hidden;white-space:nowrap;padding:10px 0;margin-left:8px}
 .ticker{display:inline-flex;gap:26px;will-change:transform}
@@ -95,43 +83,42 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
 
 /* Footer + responsive */
 .foot{padding:16px;text-align:center;color:#9fb0cc;border-top:1px solid #122a56}
-@media (max-width:980px){ .controls{grid-template-columns:1fr 1fr 1fr} .modal-grid{grid-template-columns:1fr} .grid-body{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))} .hero h2{font-size:24px} }
+@media (max-width:980px){ .controls{grid-template-columns:1fr 1fr 1fr} .grid-body{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))} .hero h2{font-size:28px} }
 </style>
 </head>
 <body>
-  <!-- Scoreboard Header -->
+  <!-- Header -->
   <header class="board">
     <div class="board-inner">
       <div class="brand">
         <!-- Interlocked SW logo -->
         <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
           <defs><linearGradient id="swg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe082"/><stop offset="1" stop-color="#f5c518"/></linearGradient></defs>
-          <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#swg)"/><path d="M20 22 h24 v6 H26 v2 h10 q8 0 8 7 q0 8 -12 8 h-16 v-6 h16 q6 0 6-3 q0-3 -6-3 h-8 q-8 0 -8-7 q0-7 8-7 z" fill="#0b0b0b"/>
+          <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#swg)"/>
+          <path d="M20 22 h24 v6 H26 v2 h10 q8 0 8 7 q0 8 -12 8 h-16 v-6 h16 q6 0 6-3 q0-3 -6-3 h-8 q-8 0 -8-7 q0-7 8-7 z" fill="#0b0b0b"/>
         </svg>
         <div class="titles">
-          <h1>SPONSORSHIP AUCTIONS</h1>
-          <p>Bid. Win. Sponsor the Game.</p>
+          <h1>SPONSORWINS</h1>
+          <p>Premium Sports Sponsorship Marketplace</p>
         </div>
       </div>
       <nav id="leagueNav" class="pills" aria-label="Leagues"></nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <main class="wrap">
-    <section class="hero" aria-label="Intro">
-      <h2>Premium sponsorship inventory from pro teams.</h2>
-      <p>Season-long packages, single-game features, and arena takeovers across NFL, NBA, NHL, MLB, and MLS. Verified bidders only.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#listings">Browse Listings</a>
-        <button id="refreshBtn" class="btn" type="button">Refresh Feed</button>
-      </div>
+    <section class="hero" aria-label="Hero">
+      <h2>Bid. Win. Sponsor the Game.</h2>
+      <p>Season-long packages, single-game features, and arena takeovers across NFL, NBA, NHL, MLB, and MLS.</p>
+      <a href="#" class="cta" id="verifyCta">Create a Verified Account to Bid</a>
     </section>
 
-    <!-- Controls -->
+    <!-- Filters -->
     <section class="controls" aria-label="Filters">
       <div class="field"><label for="leagueSelect">League</label><select id="leagueSelect"></select></div>
       <div class="field"><label for="teamSelect">Team</label><select id="teamSelect"></select></div>
-      <div class="field"><label for="assetSelect">Asset Type</label><select id="assetSelect"></select></div>
+      <div class="field"><label for="assetSelect">Asset</label><select id="assetSelect"></select></div>
       <div class="field"><label for="search">Search</label><input id="search" type="search" placeholder="Search by team, stadium, asset"/></div>
       <div class="field"><label for="sort">Sort</label><select id="sort">
         <option value="relevance">Relevance</option>
@@ -141,13 +128,12 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
     </section>
 
     <!-- Listings -->
-    <section id="listings" class="grid" aria-label="Listings">
+    <section class="grid" aria-label="Listings">
       <div class="grid-head">
         <h3>Featured Sponsorships</h3>
-        <div><button id="shuffleBtn" class="btn" type="button">Shuffle</button></div>
+        <div><button id="shuffleBtn" class="pill" type="button" style="border-radius:10px">Shuffle</button></div>
       </div>
       <div id="listingGrid" class="grid-body"></div>
-      <button id="loadMore" class="loadmore" type="button">Load more</button>
     </section>
   </main>
 
@@ -158,26 +144,6 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
   </section>
 
   <footer class="foot"><p>© 2025 SponsorWins — Prototype Demo</p></footer>
-
-  <!-- Modal (accessible) -->
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <div class="modal">
-      <div class="modal-head">
-        <strong id="mTitle">Listing</strong>
-        <button class="modal-close" id="mClose" type="button" aria-label="Close">Close</button>
-      </div>
-      <div class="modal-body">
-        <div class="notice"><span class="dot" aria-hidden="true"></span><div><strong>Verified bidders only.</strong><br/>Create an account and verify to place live bids in production.</div></div>
-        <div class="modal-grid">
-          <div id="mVisual" aria-hidden="true"></div>
-          <div>
-            <div id="mMeta" style="margin-bottom:10px;"></div>
-            <div class="bidlist" id="mBids" aria-label="Recent bids"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <script>
 /* ---------- Data ---------- */
@@ -196,16 +162,17 @@ const SW_DATA = (()=> {
   function assetsFor(lg){return core.concat(extras[lg]||[]);} return {leagues,ranges,brands,assetsFor};
 })();
 
-/* ---------- Visuals ---------- */
+/* ---------- Visual helpers ---------- */
 function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*131+s.charCodeAt(i))>>>0;return h.toString(16);}
 function hue(s,sh=0){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return ((h%360)+sh)%360;}
 function crestSVG(team){
   const id='g'+hash(team), base=`hsl(${hue(team)}deg 65% 45%)`, acc=`hsl(${hue(team,30)}deg 70% 60%)`;
   const initials=team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  return `<svg viewBox="0 0 64 64" aria-hidden="true">
+  return `<svg viewBox="0 0 96 96" aria-hidden="true">
     <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/></linearGradient></defs>
-    <path d="M32 4 L58 18 L50 48 L32 60 L14 48 L6 18 Z" fill="url(#${id})" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
-    <circle cx="32" cy="32" r="10" fill="rgba(0,0,0,.25)"/><text x="32" y="36" font-size="16" font-weight="900" text-anchor="middle" fill="white">${initials}</text>
+    <path d="M48 8 L86 28 L74 72 L48 88 L22 72 L10 28 Z" fill="url(#${id})" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+    <circle cx="48" cy="48" r="14" fill="rgba(0,0,0,.25)"/>
+    <text x="48" y="54" font-size="22" font-weight="900" text-anchor="middle" fill="white">${initials}</text>
   </svg>`;
 }
 function assetThumbSVG(asset){
@@ -227,88 +194,72 @@ function assetThumbSVG(asset){
   return `<svg viewBox="0 0 240 120" role="img" aria-label="${asset} thumbnail">${defs}${bg}${art}</svg>`;
 }
 
-/* ---------- DOM ---------- */
+/* ---------- DOM + helpers ---------- */
 const leagueNav=document.getElementById('leagueNav'), leagueSelect=document.getElementById('leagueSelect'),
 teamSelect=document.getElementById('teamSelect'), assetSelect=document.getElementById('assetSelect'),
 listingGrid=document.getElementById('listingGrid'), shuffleBtn=document.getElementById('shuffleBtn'),
-refreshBtn=document.getElementById('refreshBtn'), loadMoreBtn=document.getElementById('loadMore'),
 ticker=document.getElementById('ticker'), searchEl=document.getElementById('search'), sortEl=document.getElementById('sort');
+document.getElementById('verifyCta').onclick=(e)=>{e.preventDefault(); alert('Prototype: account verification flow');};
 
 function currency(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
 function randIn(lg){const r=SW_DATA.ranges[lg],base=Math.random()*(r.high-r.low)+r.low,step=base>50000?1000:100;return Math.round(base/step)*step;}
 function randBrand(){const a=SW_DATA.brands;return a[Math.floor(Math.random()*a.length)];}
-function crestEl(team){const span=document.createElement('span');span.className='logo-crest';span.innerHTML=crestSVG(team);return span;}
+function crestEl(team){const span=document.createElement('div'); span.innerHTML=crestSVG(team); return span.firstChild; }
 function activeLeague(){return leagueSelect.value||Object.keys(SW_DATA.leagues)[0];}
 
-/* Build nav + selectors */
+/* League pills + selects */
 function buildNav(){
   leagueNav.innerHTML='';
   Object.keys(SW_DATA.leagues).forEach((lg,i)=>{
     const b=document.createElement('button'); b.className='pill'+(i===0?' active':''); b.textContent=lg;
-    b.onclick=()=>{[...leagueNav.children].forEach(c=>c.classList.remove('active')); b.classList.add('active');
-      leagueSelect.value=lg; populateTeams(lg); populateAssets(lg); resetAndRender();};
+    b.onclick=()=>{[...leagueNav.children].forEach(c=>c.classList.remove('active')); b.classList.add('active'); leagueSelect.value=lg; populateTeams(lg); populateAssets(lg); renderCards();};
     leagueNav.appendChild(b);
   });
 }
 function populateLeagues(){leagueSelect.innerHTML='';Object.keys(SW_DATA.leagues).forEach((lg,i)=>{const o=document.createElement('option');o.value=lg;o.textContent=lg;leagueSelect.appendChild(o);if(i===0)leagueSelect.value=lg;});}
-function populateTeams(lg){teamSelect.innerHTML='';SW_DATA.leagues[lg].forEach(([team,stadium])=>{const o=document.createElement('option');o.value=team;o.textContent=team;o.dataset.stadium=stadium;teamSelect.appendChild(o);}); teamSelect.insertAdjacentHTML('afterbegin','<option value="">Any team</option>');}
+function populateTeams(lg){teamSelect.innerHTML='';SW_DATA.leagues[lg].forEach(([team,stadium])=>{const o=document.createElement('option');o.value=team;o.textContent=team; o.dataset.stadium=stadium; teamSelect.appendChild(o);}); teamSelect.insertAdjacentHTML('afterbegin','<option value="">Any team</option>');}
 function populateAssets(lg){assetSelect.innerHTML='';SW_DATA.assetsFor(lg).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;assetSelect.appendChild(o);}); assetSelect.insertAdjacentHTML('afterbegin','<option value="">Any asset</option>');}
 
-/* Cards + paging */
-let page=1; const PAGE_SIZE=12;
+/* Cards */
 function makeCard({lg,team,stadium,asset,price}){
   const el=document.createElement('article'); el.className='card';
-  el.innerHTML=`<div class="thumb">${assetThumbSVG(asset)}</div>
+  el.innerHTML=`<div class="thumb"></div>
     <div class="meta">
       <span class="badge">${lg}</span>
-      <div class="row"><span class="team"><strong>${team}</strong></span><span>${stadium}</span></div>
-      <div class="row"><span class="asset">${asset}</span><span class="price">${currency(price)}</span></div>
+      <div class="asset">${asset}</div>
+      <div style="opacity:.85">${team}</div>
+      <div style="opacity:.65">${stadium}</div>
+      <div class="price">${currency(price)}</div>
     </div>
-    <a class="cta" href="#" aria-label="View auction for ${team} ${asset}">View Auction</a>`;
-  el.querySelector('.team').prepend(crestEl(team));
-  el.querySelector('.cta').onclick=(e)=>{e.preventDefault();openModal({lg,team,stadium,asset,price});};
+    <div class="cta-row"><a class="view" href="#">View Auction</a></div>`;
+  el.querySelector('.thumb').appendChild(crestEl(team));
+  el.querySelector('.view').onclick=(e)=>{e.preventDefault(); alert('Prototype: open detail page');};
   return el;
 }
+
 function buildDataset(){
   const lg=activeLeague(), teams=SW_DATA.leagues[lg], assets=SW_DATA.assetsFor(lg);
   const q=(searchEl.value||'').toLowerCase(), t=teamSelect.value||'', a=assetSelect.value||'';
-  let all=[];
+  const arr=[];
   teams.forEach(([team,stadium])=>{
     assets.forEach(asset=>{
       const hay=`${team} ${stadium} ${asset}`.toLowerCase();
       if((!q||hay.includes(q))&&(!t||t===team)&&(!a||a===asset)){
-        all.push({lg,team,stadium,asset,price:randIn(lg)});
+        arr.push({lg,team,stadium,asset,price:randIn(lg)});
       }
     });
   });
   const sort=sortEl.value;
-  if(sort==='priceAsc') all.sort((x,y)=>x.price-y.price);
-  if(sort==='priceDesc') all.sort((x,y)=>y.price-x.price);
-  return all;
-}
-let currentData=[];
-function resetAndRender(){ page=1; currentData=buildDataset(); renderPage(); }
-function renderPage(){
-  listingGrid.innerHTML='';
-  const slice=currentData.slice(0,page*PAGE_SIZE);
-  slice.forEach(x=>listingGrid.appendChild(makeCard(x)));
-  loadMoreBtn.style.display = (slice.length<currentData.length)?'block':'none';
+  if(sort==='priceAsc') arr.sort((x,y)=>x.price-y.price);
+  if(sort==='priceDesc') arr.sort((x,y)=>y.price-x.price);
+  return arr.slice(0,16); // show a tight first page like the mock
 }
 
-/* Modal */
-const mBackdrop=document.getElementById('modalBackdrop'), mClose=document.getElementById('mClose'), mTitle=document.getElementById('mTitle'), mMeta=document.getElementById('mMeta'), mVisual=document.getElementById('mVisual'), mBids=document.getElementById('mBids');
-let lastFocus=null;
-function openModal({lg,team,stadium,asset,price}){
-  mTitle.textContent=`${team} — ${asset}`;
-  mVisual.innerHTML=`<div class="thumb" style="border:1px solid #183261;border-radius:12px;overflow:hidden">${assetThumbSVG(asset)}</div>`;
-  mMeta.innerHTML=`<div class="row"><span class="badge">${lg}</span><span class="price">${currency(price)}</span></div><div class="row"><span class="team"></span><span>${stadium}</span></div>`;
-  const tspan=mMeta.querySelector('.team'); tspan.textContent=team; tspan.prepend(crestEl(team));
-  mBids.innerHTML=''; const bids=Array.from({length:6}).map((_,i)=>{const brand=randBrand();const val=currency(Math.round(price*(0.82+i*0.035)));const mins=(6-i)*3;return{brand,val,ago:`${mins} min ago`};});
-  bids.reverse().forEach(b=>{const row=document.createElement('div');row.className='bid';row.innerHTML=`<span>${b.brand}</span><strong>${b.val}</strong><span style="opacity:.7">${b.ago}</span>`;mBids.appendChild(row);});
-  lastFocus=document.activeElement; mBackdrop.style.display='flex'; mClose.focus();
+function renderCards(){
+  listingGrid.innerHTML='';
+  const data=buildDataset();
+  data.forEach(x=>listingGrid.appendChild(makeCard(x)));
 }
-function closeModal(){mBackdrop.style.display='none'; if(lastFocus) lastFocus.focus();}
-mClose.onclick=closeModal; mBackdrop.onclick=(e)=>{if(e.target===mBackdrop) closeModal();}; document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mBackdrop.style.display==='flex') closeModal();});
 
 /* Ticker */
 let items=[]; let last=0; let offset=0;
@@ -327,10 +278,11 @@ function animate(ts){ if(!last) last=ts; const dt=ts-last; last=ts; const speed=
   if(Math.random()<dt/4500){newItem();} requestAnimationFrame(animate); }
 
 /* Init */
-buildNav(); populateLeagues(); populateTeams(activeLeague()); populateAssets(activeLeague()); resetAndRender();
-shuffleBtn.onclick=resetAndRender; refreshBtn.onclick=()=>{ticker.innerHTML='';items=[];seedTicker(14);};
-leagueSelect.onchange=()=>{[...leagueNav.children].forEach(c=>c.classList.remove('active')); const idx=Object.keys(SW_DATA.leagues).indexOf(leagueSelect.value); if(idx>-1) leagueNav.children[idx].classList.add('active'); populateTeams(leagueSelect.value); populateAssets(leagueSelect.value); resetAndRender();};
-teamSelect.onchange=resetAndRender; assetSelect.onchange=resetAndRender; searchEl.oninput=resetAndRender; sortEl.onchange=resetAndRender; loadMoreBtn.onclick=()=>{page++; renderPage();};
+buildNav(); populateLeagues(); populateTeams(leagueSelect.value); populateAssets(leagueSelect.value); renderCards();
+document.getElementById('sort').onchange=renderCards; document.getElementById('search').oninput=renderCards;
+document.getElementById('leagueSelect').onchange=()=>{const lg=leagueSelect.value; [...leagueNav.children].forEach(c=>c.classList.remove('active')); const idx=Object.keys(SW_DATA.leagues).indexOf(lg); if(idx>-1) leagueNav.children[idx].classList.add('active'); populateTeams(lg); populateAssets(lg); renderCards();};
+document.getElementById('teamSelect').onchange=renderCards; document.getElementById('assetSelect').onchange=renderCards;
+shuffleBtn.onclick=renderCards;
 seedTicker(14); requestAnimationFrame(animate);
 </script>
 </body>
