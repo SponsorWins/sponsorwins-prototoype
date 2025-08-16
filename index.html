@@ -7,114 +7,103 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#050a16; --bg2:#0a1430; --ring:#1b3466; --panel:#0d1f41;
-  --gold:#f5c518; --gold2:#ffe082; --ink:#eaf1ff; --muted:#9fb0cc; --ok:#17d3a5;
-  --edge: rgba(255,255,255,.08);
+  --bg:#070b16; --panel:#0b1224; --ink:#f5f7ff; --muted:#a9b6d3;
+  --gold:#f5c518; --gold2:#ffd56a; --edge:rgba(255,255,255,.06); --ring:#1f2b4f;
 }
-*{box-sizing:border-box}
-html,body{
-  margin:0;padding:0;background:
-    radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #060c18 100%),
-    radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.12), transparent 62%);
-  color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif
-}
+*{box-sizing:border-box} html,body{margin:0;padding:0;background:
+  radial-gradient(1400px 800px at 50% -18%, #132452 0%, #0b1530 55%, #060d1a 100%);
+  color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-/* Header */
-.board{position:sticky;top:0;z-index:60;border-bottom:1px solid #0e2045;
-  background:linear-gradient(180deg,#0a1430 0%, #07142b 100%); box-shadow:0 20px 60px rgba(0,0,0,.55)}
-.board-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:14px}
-.logo{width:64px;height:64px}
-.titles h1{margin:0;font-size:18px;letter-spacing:.24em}
-.titles p{margin:4px 0 0;color:var(--muted);font-size:13px}
-.pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{padding:8px 13px;border-radius:999px;border:1px solid var(--ring);color:var(--muted);background:rgba(16,34,70,.55);cursor:pointer;transition:.2s}
-.pill:hover{border-color:#2b4f9e}.pill.active{background:var(--gold);color:#0b0b0b;border-color:var(--gold)}
+/* Header (very clean) */
+.header{position:sticky;top:0;z-index:50; backdrop-filter:saturate(120%) blur(6px);
+  background:linear-gradient(180deg,rgba(5,10,22,.9),rgba(5,10,22,.65)); border-bottom:1px solid #0f2147}
+.header-inner{max-width:1200px;margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between}
+.brand{display:flex; align-items:center; gap:12px}
+.sw{width:56px;height:56px}
+.title{font-weight:800; letter-spacing:.22em; font-size:18px; margin:0}
 
-/* Wrapper */
-.wrap{max-width:1240px;margin:0 auto;padding:20px}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;border:1px solid #122a56;border-radius:24px;padding:38px 26px 34px;text-align:center;
+/* Hero (centered like the mock) */
+.wrap{max-width:1200px;margin:0 auto;padding:20px}
+.hero{margin-top:14px; text-align:center; padding:56px 20px 44px;
+  border:1px solid #132a58; border-radius:20px;
   background:
-    radial-gradient(1000px 280px at 50% -14%, rgba(96,136,255,.28), transparent 70%),
-    linear-gradient(180deg, rgba(245,197,24,.10), rgba(245,197,24,0) 40%),
-    linear-gradient(180deg, var(--bg2), transparent)}
-.hero::before{content:"";position:absolute;inset:-6% -18% auto -18%;height:250px;
-  background:
-    radial-gradient(130px 60px at 16% 28%, rgba(255,255,255,.22), transparent 60%),
-    radial-gradient(110px 50px at 84% 18%, rgba(255,255,255,.15), transparent 60%);
-  filter:blur(2px);opacity:.7;pointer-events:none}
-.hero h2{margin:0 0 8px 0;font-size:34px}
-.hero p{margin:0 0 16px;color:var(--muted);font-size:16px}
-.cta{display:inline-block;margin-top:8px;padding:12px 18px;border-radius:12px;border:1px solid var(--gold);
-  background:linear-gradient(180deg,var(--gold),#e1b312);color:#0b0b0b;font-weight:900;box-shadow:0 12px 32px rgba(245,197,24,.42);text-decoration:none}
+    radial-gradient(900px 250px at 50% -12%, rgba(96,136,255,.22), transparent 70%),
+    linear-gradient(180deg, rgba(245,197,24,.08), rgba(245,197,24,0) 40%),
+    linear-gradient(180deg, #0b1630, transparent)}
+.hero h1{font-size:40px; line-height:1.1; margin:0 0 12px}
+.hero p{color:var(--muted); margin:0 0 18px}
+.cta{display:inline-block; padding:13px 20px; border-radius:12px; text-decoration:none; color:#0a0a0a; font-weight:900;
+  background:linear-gradient(180deg,var(--gold),#e3b616); border:1px solid var(--gold); box-shadow:0 14px 40px rgba(245,197,24,.38)}
 
-/* Controls */
-.controls{display:grid;grid-template-columns:repeat(4,1fr) 1fr;gap:10px;margin-top:18px}
-.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-select,input[type="search"]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--ring);background:#0d1f41;color:var(--ink)}
-select:focus,input:focus{outline:2px solid #2b4f9e}
+/* League pills under hero */
+.pills{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:18px}
+.pill{padding:9px 14px; border-radius:999px; border:1px solid var(--ring); background:#0c1736; color:#cfe1ff; cursor:pointer}
+.pill.active{background:var(--gold); color:#111; border-color:var(--gold)}
 
-/* Grid */
-.grid{margin-top:18px;border:1px solid #122a56;border-radius:22px;background:linear-gradient(180deg,#0c1836,#09132a)}
-.grid-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #122a56}
-.grid-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:14px}
+/* Filters row (simple) */
+.controls{display:grid; grid-template-columns:repeat(4,1fr) 1fr; gap:10px; margin:18px 0}
+.field label{display:block; font-size:12px; color:#9fb0cc; margin-bottom:6px}
+select,input[type="search"]{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--ring); background:#0c1736; color:var(--ink)}
 
-/* Card */
-.card{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--edge);box-shadow:0 12px 34px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.02)}
-.card .thumb{display:grid;place-items:center;height:170px;border-bottom:1px solid #183261;background:linear-gradient(180deg, rgba(51,94,234,.14), transparent)}
-.card .thumb svg{width:92px;height:92px}
-.meta{padding:12px 14px;display:grid;gap:9px;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#0a0a0a;background:var(--gold);padding:4px 8px;border-radius:999px;font-weight:900;width:max-content;margin-inline:auto}
-.asset{color:#ffe082;font-weight:600}
-.price{font-weight:900}
-.cta-row{display:flex;justify-content:center;padding:0 14px 14px}
-.view{display:inline-block;background:#0d2148;border:1px solid #1a396f;color:#dce6ff;padding:10px 12px;border-radius:12px;text-decoration:none}
+/* Grid + Cards (minimal, like the mock) */
+.grid{border:1px solid #132a58; border-radius:20px; background:linear-gradient(180deg,#0c193a,#0a142c)}
+.grid-head{display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #132a58}
+.grid-body{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; padding:16px}
+.card{border:1px solid var(--edge); border-radius:16px; overflow:hidden; background:rgba(255,255,255,.03)}
+.card .thumb{display:grid; place-items:center; height:180px; background:linear-gradient(180deg,rgba(51,94,234,.12),transparent); border-bottom:1px solid #163366}
+.card .thumb svg{width:110px; height:110px}
+.meta{padding:14px 16px; text-align:center}
+.asset{color:var(--gold2); font-weight:700; margin-top:2px}
+.small{color:#c9d6f3; opacity:.9; margin-top:2px}
+.price{font-weight:900; margin-top:6px}
 
 /* Ticker */
-.ticker-wrap{position:relative;border-top:2px solid #122a56;border-bottom:2px solid #122a56;background:#0a142b;margin-top:18px}
-.ticker-title{position:absolute;left:16px;top:-12px;background:#0a142b;color:var(--muted);font-size:12px;padding:2px 8px;border:1px solid var(--ring);border-radius:6px;letter-spacing:.12em}
-.ticker-viewport{overflow:hidden;white-space:nowrap;padding:10px 0;margin-left:8px}
-.ticker{display:inline-flex;gap:26px;will-change:transform}
-.ticker-item{display:inline-flex;gap:8px;align-items:center;background:#0e1f41;border:1px solid var(--ring);border-radius:999px;padding:6px 10px;font-size:13px}
-.ticker-item .dot{width:6px;height:6px;border-radius:999px;background:var(--ok)}
-.ticker-item .link{color:#cfe1ff;text-decoration:none}
+.ticker-wrap{position:relative; margin:18px 0 10px; border-top:1px solid #122a56; border-bottom:1px solid #122a56; background:#0a142b}
+.ticker-title{position:absolute; left:16px; top:-10px; background:#0a142b; color:#9fb0cc; font-size:12px; padding:2px 8px; border:1px solid var(--ring); border-radius:6px; letter-spacing:.12em}
+.ticker-viewport{overflow:hidden; white-space:nowrap; padding:10px 0; margin-left:8px}
+.ticker{display:inline-flex; gap:26px; will-change:transform}
+.ticker-item{display:inline-flex; gap:8px; align-items:center; background:#0e1f41; border:1px solid var(--ring); border-radius:999px; padding:6px 10px; font-size:13px}
+.ticker-item .dot{width:6px; height:6px; border-radius:999px; background:#17d3a5}
+.ticker-item .link{color:#cfe1ff; text-decoration:none}
 
-/* Footer + responsive */
-.foot{padding:16px;text-align:center;color:#9fb0cc;border-top:1px solid #122a56}
-@media (max-width:980px){ .controls{grid-template-columns:1fr 1fr 1fr} .grid-body{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))} .hero h2{font-size:28px} }
+/* Footer */
+.foot{padding:16px; text-align:center; color:#9fb0cc; border-top:1px solid #122a56}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero h1{font-size:32px}
+  .controls{grid-template-columns:1fr 1fr 1fr}
+  .grid-body{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+}
 </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="board">
-    <div class="board-inner">
+  <header class="header">
+    <div class="header-inner">
       <div class="brand">
-        <!-- Interlocked SW logo -->
-        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
-          <defs><linearGradient id="swg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe082"/><stop offset="1" stop-color="#f5c518"/></linearGradient></defs>
-          <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#swg)"/>
+        <!-- Simple interlocked SW -->
+        <svg class="sw" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd56a"/><stop offset="1" stop-color="#f5c518"/></linearGradient></defs>
+          <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#g)"/>
           <path d="M20 22 h24 v6 H26 v2 h10 q8 0 8 7 q0 8 -12 8 h-16 v-6 h16 q6 0 6-3 q0-3 -6-3 h-8 q-8 0 -8-7 q0-7 8-7 z" fill="#0b0b0b"/>
         </svg>
-        <div class="titles">
-          <h1>SPONSORWINS</h1>
-          <p>Premium Sports Sponsorship Marketplace</p>
-        </div>
+        <h2 class="title">SPONSORWINS</h2>
       </div>
-      <nav id="leagueNav" class="pills" aria-label="Leagues"></nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <main class="wrap">
-    <section class="hero" aria-label="Hero">
-      <h2>Bid. Win. Sponsor the Game.</h2>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Bid. Win. Sponsor the Game.</h1>
       <p>Season-long packages, single-game features, and arena takeovers across NFL, NBA, NHL, MLB, and MLS.</p>
-      <a href="#" class="cta" id="verifyCta">Create a Verified Account to Bid</a>
+      <a href="#" class="cta" id="verifyBtn">Create a Verified Account to Bid</a>
+
+      <!-- LEAGUE PILLS (centered) -->
+      <div id="leaguePills" class="pills" style="margin-top:22px"></div>
     </section>
 
-    <!-- Filters -->
+    <!-- FILTERS -->
     <section class="controls" aria-label="Filters">
       <div class="field"><label for="leagueSelect">League</label><select id="leagueSelect"></select></div>
       <div class="field"><label for="teamSelect">Team</label><select id="teamSelect"></select></div>
@@ -127,17 +116,17 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
       </select></div>
     </section>
 
-    <!-- Listings -->
+    <!-- LISTINGS -->
     <section class="grid" aria-label="Listings">
       <div class="grid-head">
-        <h3>Featured Sponsorships</h3>
-        <div><button id="shuffleBtn" class="pill" type="button" style="border-radius:10px">Shuffle</button></div>
+        <strong>Featured Sponsorships</strong>
+        <button id="shuffle" class="pill" type="button" style="border-radius:10px">Shuffle</button>
       </div>
-      <div id="listingGrid" class="grid-body"></div>
+      <div id="grid" class="grid-body"></div>
     </section>
   </main>
 
-  <!-- Ticker -->
+  <!-- TICKER -->
   <section class="ticker-wrap" aria-label="Recent Activity">
     <div class="ticker-title">RECENT ACTIVITY</div>
     <div class="ticker-viewport"><div id="ticker" class="ticker"></div></div>
@@ -146,144 +135,62 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
   <footer class="foot"><p>© 2025 SponsorWins — Prototype Demo</p></footer>
 
 <script>
-/* ---------- Data ---------- */
-const SW_DATA = (()=> {
-  const core=["Fixed Signage","LED Signage","Naming Rights","Jersey Patch","Helmet Logo","Concourse Signage","Videoboard Signage","Concession Areas"];
-  const extras={MLB:["Outfield Wall Signage"],NHL:["Dasher-Board Signage","In-Ice Signage"],MLS:["Pitch-Level Signage"]};
-  const leagues={
-    NFL:[["Portland Lumberjacks","Timberline Field"],["Las Vegas Vipers","Mojave Bank Stadium"],["Miami Tritons","Oceanview Arena"],["Milwaukee Guardians","Lakefront Field"],["Austin Outlaws","Republic Stadium"],["San Antonio Stampede","Alamo Energy Stadium"],["St. Louis Stallions","Gateway Dome"],["Salt Lake Blizzard","Wasatch Stadium"]],
-    NBA:[["Portland Pioneers","Rose City Arena"],["Las Vegas Outlaws","Desert Sun Arena"],["Miami Cyclones","Atlantic Bank Center"],["Milwaukee Lakehawks","Brew City Arena"],["Nashville Rhythm","Music City Arena"],["Kansas City Monarchs","Heartland Arena"],["San Diego Surge","Pacific Energy Arena"],["Pittsburgh Iron","Steel City Arena"]],
-    MLB:[["Portland Beavers","Cascade Ballpark"],["Las Vegas High Rollers","Silver State Stadium"],["Miami Sailfish","Gulf Breeze Park"],["Milwaukee Hammers","Brew Park"],["Charlotte Copperheads","Queen City Field"],["Oklahoma City Wranglers","Prairie Bank Ballpark"],["Sacramento Gold","Capital Field"],["Louisville Legends","Derby Park"]],
-    NHL:[["Portland Glaciers","Rose Ice Arena"],["Las Vegas Outlaws","Desert Chill Arena"],["Miami Barracudas","Ocean Ice Center"],["Milwaukee Blizzard","Brew Ice Arena"],["Quebec Voyageurs","St. Lawrence Ice Centre"],["Houston Polar Bears","Lone Star Arena"],["Kansas City Kodiaks","Heartland Icehouse"],["Anchorage Northern Lights","Aurora Ice Center"]],
-    MLS:[["Portland Cascades","Timberline Park"],["Las Vegas Scorpions","Mojave Bank Field"],["Miami Waves","Atlantic Energy Stadium"],["Milwaukee Forge","Lakefront Pitch"],["Phoenix Heatwave","Sonoran Bank Stadium"],["Raleigh Oaks","Carolina Pitch Park"],["San Diego Breakers","Pacific Pitch Arena"],["Detroit Grit","Motor City Field"]]
-  };
-  const ranges={NFL:{low:25000,high:10000000},NBA:{low:15000,high:8000000},MLB:{low:10000,high:6000000},NHL:{low:8000,high:4000000},MLS:{low:5000,high:2000000}};
-  const brands=["Glacier Water Co.","Solarix Energy","Frontier Bank","Skyline Tech","Maverick Brewing","Trailblazer Insurance","Rapid Ride E-Bikes","Aurora Health","Goldline Logistics","Oceanic Airlines","Beacon Coffee","Summit Outdoors","Blue Harbor Media","NovaCloud","Atlas Freight"];
-  function assetsFor(lg){return core.concat(extras[lg]||[]);} return {leagues,ranges,brands,assetsFor};
-})();
+/* ---- Data ---- */
+const DATA=(()=>{const core=["Fixed Signage","LED Signage","Naming Rights","Jersey Patch","Helmet Logo","Concourse Signage","Videoboard Signage","Concession Areas"];
+const extras={MLB:["Outfield Wall Signage"],NHL:["Dasher-Board Signage","In-Ice Signage"],MLS:["Pitch-Level Signage"]};
+const leagues={
+NFL:[["Portland Lumberjacks","Timberline Field"],["Las Vegas Vipers","Mojave Bank Stadium"],["Miami Tritons","Oceanview Arena"],["Milwaukee Guardians","Lakefront Field"],["Austin Outlaws","Republic Stadium"],["San Antonio Stampede","Alamo Energy Stadium"],["St. Louis Stallions","Gateway Dome"],["Salt Lake Blizzard","Wasatch Stadium"]],
+NBA:[["Portland Pioneers","Rose City Arena"],["Las Vegas Outlaws","Desert Sun Arena"],["Miami Cyclones","Atlantic Bank Center"],["Milwaukee Lakehawks","Brew City Arena"],["Nashville Rhythm","Music City Arena"],["Kansas City Monarchs","Heartland Arena"],["San Diego Surge","Pacific Energy Arena"],["Pittsburgh Iron","Steel City Arena"]],
+MLB:[["Portland Beavers","Cascade Ballpark"],["Las Vegas High Rollers","Silver State Stadium"],["Miami Sailfish","Gulf Breeze Park"],["Milwaukee Hammers","Brew Park"],["Charlotte Copperheads","Queen City Field"],["Oklahoma City Wranglers","Prairie Bank Ballpark"],["Sacramento Gold","Capital Field"],["Louisville Legends","Derby Park"]],
+NHL:[["Portland Glaciers","Rose Ice Arena"],["Las Vegas Outlaws","Desert Chill Arena"],["Miami Barracudas","Ocean Ice Center"],["Milwaukee Blizzard","Brew Ice Arena"],["Quebec Voyageurs","St. Lawrence Ice Centre"],["Houston Polar Bears","Lone Star Arena"],["Kansas City Kodiaks","Heartland Icehouse"],["Anchorage Northern Lights","Aurora Ice Center"]],
+MLS:[["Portland Cascades","Timberline Park"],["Las Vegas Scorpions","Mojave Bank Field"],["Miami Waves","Atlantic Energy Stadium"],["Milwaukee Forge","Lakefront Pitch"],["Phoenix Heatwave","Sonoran Bank Stadium"],["Raleigh Oaks","Carolina Pitch Park"],["San Diego Breakers","Pacific Pitch Arena"],["Detroit Grit","Motor City Field"]]};
+const ranges={NFL:{low:25000,high:10000000},NBA:{low:15000,high:8000000},MLB:{low:10000,high:6000000},NHL:{low:8000,high:4000000},MLS:{low:5000,high:2000000}};
+const brands=["Glacier Water Co.","Solarix Energy","Frontier Bank","Skyline Tech","Maverick Brewing","Trailblazer Insurance","Rapid Ride E-Bikes","Aurora Health","Goldline Logistics","Oceanic Airlines","Beacon Coffee","Summit Outdoors","Blue Harbor Media","NovaCloud","Atlas Freight"];
+function assetsFor(l){return core.concat(extras[l]||[]);} return {leagues,ranges,brands,assetsFor};})();
 
-/* ---------- Visual helpers ---------- */
+/* ---- Visual helpers ---- */
 function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*131+s.charCodeAt(i))>>>0;return h.toString(16);}
 function hue(s,sh=0){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return ((h%360)+sh)%360;}
-function crestSVG(team){
-  const id='g'+hash(team), base=`hsl(${hue(team)}deg 65% 45%)`, acc=`hsl(${hue(team,30)}deg 70% 60%)`;
-  const initials=team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  return `<svg viewBox="0 0 96 96" aria-hidden="true">
-    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/></linearGradient></defs>
-    <path d="M48 8 L86 28 L74 72 L48 88 L22 72 L10 28 Z" fill="url(#${id})" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
-    <circle cx="48" cy="48" r="14" fill="rgba(0,0,0,.25)"/>
-    <text x="48" y="54" font-size="22" font-weight="900" text-anchor="middle" fill="white">${initials}</text>
-  </svg>`;
-}
-function assetThumbSVG(asset){
-  const defs=`<defs>
-    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#335eea"/><stop offset="1" stop-color="#0b1530"/></linearGradient>
-    <linearGradient id="led" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#59f"/><stop offset="1" stop-color="#9cf"/></linearGradient>
-    <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#9cf"/></pattern>
-  </defs>`;
-  const bg=`<rect width="100%" height="100%" fill="#0f2248"/><rect width="100%" height="100%" fill="url(#glow)" opacity=".35"/>`;
-  let art='';
-  if(/Naming Rights/i.test(asset)){art=`<rect x="10" y="18" width="220" height="26" rx="6" fill="#f5c518"/><text x="120" y="36" font-size="16" text-anchor="middle" font-weight="900" fill="#0b0b0b">ARENA NAMING</text>`;}
-  else if(/Jersey Patch/i.test(asset)){art=`<rect x="190" y="10" width="40" height="40" rx="6" fill="#f5c518"/><text x="210" y="36" font-size="18" text-anchor="middle" font-weight="900" fill="#0b0b0b">SW</text><rect x="20" y="12" width="120" height="80" rx="10" fill="#123"/><rect x="30" y="20" width="100" height="64" rx="8" fill="#1a2f5a"/>`;}
-  else if(/Helmet Logo/i.test(asset)){art=`<path d="M60 80 q40-40 110-10 l20 20 v30 h-40 v-18 q-40 10-90-22z" fill="#1a2f5a" stroke="#294b8f" stroke-width="3"/><circle cx="140" cy="92" r="10" fill="#0b0b0b"/><circle cx="140" cy="92" r="5" fill="#888"/>`;}
-  else if(/Dasher-Board|Outfield Wall|Pitch-Level/i.test(asset)){art=`<rect x="0" y="86" width="240" height="20" fill="#0b0b0b"/><rect x="10" y="88" width="60" height="16" fill="#f5c518"/><rect x="80" y="88" width="60" height="16" fill="#59f"/><rect x="150" y="88" width="80" height="16" fill="#9cf"/>`;}
-  else if(/LED/i.test(asset)){art=`<rect x="10" y="90" width="220" height="12" fill="url(#led)"/><rect x="10" y="74" width="220" height="12" fill="url(#dots)" opacity=".6"/>`;}
-  else if(/Videoboard/i.test(asset)){art=`<rect x="30" y="14" width="180" height="90" rx="8" fill="#111" stroke="#333"/><rect x="36" y="20" width="168" height="78" rx="6" fill="#223c78"/><text x="120" y="64" font-size="18" text-anchor="middle" fill="#cfe1ff">VIDEOBOARD</text>`;}
-  else if(/Concession|Concourse/i.test(asset)){art=`<rect x="20" y="20" width="200" height="64" rx="6" fill="#1a2f5a"/><text x="120" y="58" font-size="16" text-anchor="middle" fill="#cfe1ff">CONCOURSE AREA</text>`;}
-  else {art=`<rect x="16" y="22" width="208" height="56" rx="6" fill="#1a2f5a"/><text x="120" y="56" font-size="16" text-anchor="middle" fill="#cfe1ff">SPONSOR SIGNAGE</text>`;}
-  return `<svg viewBox="0 0 240 120" role="img" aria-label="${asset} thumbnail">${defs}${bg}${art}</svg>`;
-}
+function crestSVG(team){const id='g'+hash(team), base=`hsl(${hue(team)}deg 65% 45%)`, acc=`hsl(${hue(team,30)}deg 70% 60%)`;
+const initials=team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+return `<svg viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/></linearGradient></defs><path d="M48 8 L86 28 L74 72 L48 88 L22 72 L10 28 Z" fill="url(#${id})" stroke="rgba(255,255,255,.25)" stroke-width="2"/><circle cx="48" cy="48" r="14" fill="rgba(0,0,0,.25)"/><text x="48" y="54" font-size="22" font-weight="900" text-anchor="middle" fill="white">${initials}</text></svg>`;}
 
-/* ---------- DOM + helpers ---------- */
-const leagueNav=document.getElementById('leagueNav'), leagueSelect=document.getElementById('leagueSelect'),
-teamSelect=document.getElementById('teamSelect'), assetSelect=document.getElementById('assetSelect'),
-listingGrid=document.getElementById('listingGrid'), shuffleBtn=document.getElementById('shuffleBtn'),
-ticker=document.getElementById('ticker'), searchEl=document.getElementById('search'), sortEl=document.getElementById('sort');
-document.getElementById('verifyCta').onclick=(e)=>{e.preventDefault(); alert('Prototype: account verification flow');};
+/* ---- DOM ---- */
+const pills=document.getElementById('leaguePills'), leagueSel=document.getElementById('leagueSelect'),
+teamSel=document.getElementById('teamSelect'), assetSel=document.getElementById('assetSelect'),
+grid=document.getElementById('grid'), shuffle=document.getElementById('shuffle'),
+ticker=document.getElementById('ticker'), search=document.getElementById('search'), sort=document.getElementById('sort');
+
+document.getElementById('verifyBtn').onclick=(e)=>{e.preventDefault(); alert('Prototype: account verification flow');};
 
 function currency(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
-function randIn(lg){const r=SW_DATA.ranges[lg],base=Math.random()*(r.high-r.low)+r.low,step=base>50000?1000:100;return Math.round(base/step)*step;}
-function randBrand(){const a=SW_DATA.brands;return a[Math.floor(Math.random()*a.length)];}
-function crestEl(team){const span=document.createElement('div'); span.innerHTML=crestSVG(team); return span.firstChild; }
-function activeLeague(){return leagueSelect.value||Object.keys(SW_DATA.leagues)[0];}
+function randIn(l){const r=DATA.ranges[l],base=Math.random()*(r.high-r.low)+r.low,step=base>50000?1000:100;return Math.round(base/step)*step;}
+function randBrand(){const a=DATA.brands;return a[Math.floor(Math.random()*a.length)];}
 
-/* League pills + selects */
-function buildNav(){
-  leagueNav.innerHTML='';
-  Object.keys(SW_DATA.leagues).forEach((lg,i)=>{
-    const b=document.createElement('button'); b.className='pill'+(i===0?' active':''); b.textContent=lg;
-    b.onclick=()=>{[...leagueNav.children].forEach(c=>c.classList.remove('active')); b.classList.add('active'); leagueSelect.value=lg; populateTeams(lg); populateAssets(lg); renderCards();};
-    leagueNav.appendChild(b);
-  });
-}
-function populateLeagues(){leagueSelect.innerHTML='';Object.keys(SW_DATA.leagues).forEach((lg,i)=>{const o=document.createElement('option');o.value=lg;o.textContent=lg;leagueSelect.appendChild(o);if(i===0)leagueSelect.value=lg;});}
-function populateTeams(lg){teamSelect.innerHTML='';SW_DATA.leagues[lg].forEach(([team,stadium])=>{const o=document.createElement('option');o.value=team;o.textContent=team; o.dataset.stadium=stadium; teamSelect.appendChild(o);}); teamSelect.insertAdjacentHTML('afterbegin','<option value="">Any team</option>');}
-function populateAssets(lg){assetSelect.innerHTML='';SW_DATA.assetsFor(lg).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;assetSelect.appendChild(o);}); assetSelect.insertAdjacentHTML('afterbegin','<option value="">Any asset</option>');}
+/* Build league pills + selects */
+const leagues=Object.keys(DATA.leagues);
+function buildPills(){pills.innerHTML=''; leagues.forEach((lg,i)=>{const b=document.createElement('button'); b.className='pill'+(i===0?' active':''); b.textContent=lg; b.onclick=()=>{[...pills.children].forEach(c=>c.classList.remove('active')); b.classList.add('active'); leagueSel.value=lg; populateTeamAsset(lg); render();}; pills.appendChild(b);});}
+function buildSelects(){leagueSel.innerHTML=''; leagues.forEach((lg,i)=>{const o=document.createElement('option'); o.value=lg; o.textContent=lg; leagueSel.appendChild(o); if(i===0) leagueSel.value=lg;}); populateTeamAsset(leagueSel.value);}
+function populateTeamAsset(lg){teamSel.innerHTML='<option value="">Any team</option>'; DATA.leagues[lg].forEach(([t,s])=>{const o=document.createElement('option'); o.value=t; o.textContent=t; o.dataset.stadium=s; teamSel.appendChild(o);}); assetSel.innerHTML='<option value="">Any asset</option>'; DATA.assetsFor(lg).forEach(a=>{const o=document.createElement('option'); o.value=a; o.textContent=a; assetSel.appendChild(o);});}
+leagueSel.onchange=()=>{[...pills.children].forEach(c=>c.classList.remove('active')); const idx=leagues.indexOf(leagueSel.value); if(idx>-1) pills.children[idx].classList.add('active'); populateTeamAsset(leagueSel.value); render();};
+teamSel.onchange=render; assetSel.onchange=render; search.oninput=render; sort.onchange=render;
 
-/* Cards */
-function makeCard({lg,team,stadium,asset,price}){
-  const el=document.createElement('article'); el.className='card';
-  el.innerHTML=`<div class="thumb"></div>
-    <div class="meta">
-      <span class="badge">${lg}</span>
-      <div class="asset">${asset}</div>
-      <div style="opacity:.85">${team}</div>
-      <div style="opacity:.65">${stadium}</div>
-      <div class="price">${currency(price)}</div>
-    </div>
-    <div class="cta-row"><a class="view" href="#">View Auction</a></div>`;
-  el.querySelector('.thumb').appendChild(crestEl(team));
-  el.querySelector('.view').onclick=(e)=>{e.preventDefault(); alert('Prototype: open detail page');};
-  return el;
-}
-
-function buildDataset(){
-  const lg=activeLeague(), teams=SW_DATA.leagues[lg], assets=SW_DATA.assetsFor(lg);
-  const q=(searchEl.value||'').toLowerCase(), t=teamSelect.value||'', a=assetSelect.value||'';
-  const arr=[];
-  teams.forEach(([team,stadium])=>{
-    assets.forEach(asset=>{
-      const hay=`${team} ${stadium} ${asset}`.toLowerCase();
-      if((!q||hay.includes(q))&&(!t||t===team)&&(!a||a===asset)){
-        arr.push({lg,team,stadium,asset,price:randIn(lg)});
-      }
-    });
-  });
-  const sort=sortEl.value;
-  if(sort==='priceAsc') arr.sort((x,y)=>x.price-y.price);
-  if(sort==='priceDesc') arr.sort((x,y)=>y.price-x.price);
-  return arr.slice(0,16); // show a tight first page like the mock
-}
-
-function renderCards(){
-  listingGrid.innerHTML='';
-  const data=buildDataset();
-  data.forEach(x=>listingGrid.appendChild(makeCard(x)));
-}
+/* Listings */
+function card({lg,team,stadium,asset,price}){const el=document.createElement('article'); el.className='card';
+el.innerHTML=`<div class="thumb"></div><div class="meta"><div class="asset">${asset}</div><div class="small">${team}</div><div class="small" style="opacity:.8">${stadium}</div><div class="price">${currency(price)}</div></div>`;
+el.querySelector('.thumb').appendChild((()=>{const d=document.createElement('div'); d.innerHTML=crestSVG(team); return d.firstChild;})());
+return el;}
+function dataset(){const lg=leagueSel.value, teams=DATA.leagues[lg], assets=DATA.assetsFor(lg); const q=(search.value||'').toLowerCase(); const tf=teamSel.value||''; const af=assetSel.value||''; let list=[]; teams.forEach(([t,s])=>{assets.forEach(a=>{const hay=(t+' '+s+' '+a).toLowerCase(); if((!q||hay.includes(q))&&(!tf||tf===t)&&(!af||af===a)) list.push({lg,team:t,stadium:s,asset:a,price:randIn(lg)});});}); if(sort.value==='priceAsc') list.sort((x,y)=>x.price-y.price); if(sort.value==='priceDesc') list.sort((x,y)=>y.price-x.price); return list.slice(0,15);}
+function render(){grid.innerHTML=''; dataset().forEach(x=>grid.appendChild(card(x)));}
 
 /* Ticker */
 let items=[]; let last=0; let offset=0;
-function newItem(){
-  const keys=Object.keys(SW_DATA.leagues), lg=keys[Math.floor(Math.random()*keys.length)];
-  const [team]=SW_DATA.leagues[lg][Math.floor(Math.random()*SW_DATA.leagues[lg].length)];
-  const asset=SW_DATA.assetsFor(lg)[Math.floor(Math.random()*SW_DATA.assetsFor(lg).length)];
-  const price=currency(randIn(lg)), br=randBrand();
-  const a=document.createElement('a'); a.href="#"; a.className='link'; a.onclick=e=>e.preventDefault(); a.textContent=`${br} bid ${price} on ${asset} • ${team} (${lg})`;
-  const span=document.createElement('span'); span.className='ticker-item'; const dot=document.createElement('span'); dot.className='dot';
-  span.appendChild(dot); span.appendChild(a); ticker.appendChild(span); items.push(span);
-}
-function seedTicker(n=16){for(let i=0;i<n;i++) newItem();}
-function animate(ts){ if(!last) last=ts; const dt=ts-last; last=ts; const speed=52; offset-=(speed*dt/1000); ticker.style.transform=`translateX(${offset}px)`;
-  if(items.length){const first=items[0];const rect=first.getBoundingClientRect();const holder=ticker.parentElement.getBoundingClientRect();if(rect.right<holder.left){const w=first.offsetWidth+26;ticker.removeChild(first);items.shift();offset+=w;}}
-  if(Math.random()<dt/4500){newItem();} requestAnimationFrame(animate); }
+function newItem(){const lg=leagues[Math.floor(Math.random()*leagues.length)], [team]=DATA.leagues[lg][Math.floor(Math.random()*DATA.leagues[lg].length)], asset=DATA.assetsFor(lg)[Math.floor(Math.random()*DATA.assetsFor(lg).length)], price=currency(randIn(lg)), br=randBrand(); const a=document.createElement('a'); a.href="#"; a.className='link'; a.onclick=e=>e.preventDefault(); a.textContent=`${br} bid ${price} on ${asset} • ${team} (${lg})`; const span=document.createElement('span'); span.className='ticker-item'; const dot=document.createElement('span'); dot.className='dot'; span.appendChild(dot); span.appendChild(a); ticker.appendChild(span); items.push(span);}
+function seed(n=14){for(let i=0;i<n;i++) newItem();}
+function animate(ts){if(!last) last=ts; const dt=ts-last; last=ts; const speed=50; offset-=(speed*dt/1000); ticker.style.transform=`translateX(${offset}px)`; if(items.length){const first=items[0]; const rect=first.getBoundingClientRect(); const holder=ticker.parentElement.getBoundingClientRect(); if(rect.right<holder.left){const w=first.offsetWidth+26; ticker.removeChild(first); items.shift(); offset+=w;}} if(Math.random()<dt/5000){newItem();} requestAnimationFrame(animate);}
 
 /* Init */
-buildNav(); populateLeagues(); populateTeams(leagueSelect.value); populateAssets(leagueSelect.value); renderCards();
-document.getElementById('sort').onchange=renderCards; document.getElementById('search').oninput=renderCards;
-document.getElementById('leagueSelect').onchange=()=>{const lg=leagueSelect.value; [...leagueNav.children].forEach(c=>c.classList.remove('active')); const idx=Object.keys(SW_DATA.leagues).indexOf(lg); if(idx>-1) leagueNav.children[idx].classList.add('active'); populateTeams(lg); populateAssets(lg); renderCards();};
-document.getElementById('teamSelect').onchange=renderCards; document.getElementById('assetSelect').onchange=renderCards;
-shuffleBtn.onclick=renderCards;
-seedTicker(14); requestAnimationFrame(animate);
+buildPills(); buildSelects(); render(); shuffle.onclick=render; seed(14); requestAnimationFrame(animate);
 </script>
 </body>
 </html>
