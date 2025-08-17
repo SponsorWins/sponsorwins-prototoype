@@ -7,122 +7,184 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#070b16; --panel:#0b1224; --ink:#f5f7ff; --muted:#a9b6d3;
-  --gold:#f5c518; --gold2:#ffd56a; --edge:rgba(255,255,255,.06); --ring:#1f2b4f;
+  --bg:#060b18; --ink:#eef3ff; --muted:#b1c0de;
+  --gold:#f5c518; --gold2:#ffd86b; --ring:#1b2c57; --card:#0c1734; --edge:rgba(255,255,255,.08);
 }
-*{box-sizing:border-box} html,body{margin:0;padding:0;background:
-  radial-gradient(1400px 800px at 50% -18%, #132452 0%, #0b1530 55%, #060d1a 100%);
-  color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box} html,body{margin:0;padding:0;background:radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #050b18 100%);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
 
-/* Header (very clean) */
-.header{position:sticky;top:0;z-index:50; backdrop-filter:saturate(120%) blur(6px);
-  background:linear-gradient(180deg,rgba(5,10,22,.9),rgba(5,10,22,.65)); border-bottom:1px solid #0f2147}
-.header-inner{max-width:1200px;margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between}
-.brand{display:flex; align-items:center; gap:12px}
-.sw{width:56px;height:56px}
-.title{font-weight:800; letter-spacing:.22em; font-size:18px; margin:0}
+/* Header (like mock) */
+.header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(6,11,24,.95),rgba(6,11,24,.78));border-bottom:1px solid #0e2045;backdrop-filter:saturate(120%) blur(6px)}
+.header-inner{max-width:1200px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}
+.logoMark{width:28px;height:28px;border-radius:6px;background:linear-gradient(180deg,#ffd86b,#f5c518);display:grid;place-items:center;color:#0a0a0a;font-weight:900}
+.brandname{font-weight:800;font-size:18px;letter-spacing:.02em}
+.nav{display:flex;gap:24px;align-items:center}
+.nav a{color:#e7efff;text-decoration:none;opacity:.9}
+.nav .btn{padding:8px 14px;border-radius:10px;background:linear-gradient(180deg,#ffd86b,#f5c518);color:#0a0a0a;font-weight:800;text-decoration:none}
 
-/* Hero (centered like the mock) */
-.wrap{max-width:1200px;margin:0 auto;padding:20px}
-.hero{margin-top:14px; text-align:center; padding:56px 20px 44px;
-  border:1px solid #132a58; border-radius:20px;
+/* Hero — uses your exact image */
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.hero{margin-top:28px;text-align:center;border-radius:18px;overflow:hidden;position:relative}
+.hero-bg{
   background:
-    radial-gradient(900px 250px at 50% -12%, rgba(96,136,255,.22), transparent 70%),
-    linear-gradient(180deg, rgba(245,197,24,.08), rgba(245,197,24,0) 40%),
-    linear-gradient(180deg, #0b1630, transparent)}
-.hero h1{font-size:40px; line-height:1.1; margin:0 0 12px}
-.hero p{color:var(--muted); margin:0 0 18px}
-.cta{display:inline-block; padding:13px 20px; border-radius:12px; text-decoration:none; color:#0a0a0a; font-weight:900;
-  background:linear-gradient(180deg,var(--gold),#e3b616); border:1px solid var(--gold); box-shadow:0 14px 40px rgba(245,197,24,.38)}
+    radial-gradient(1200px 360px at 50% -20%, rgba(0,0,0,.35), rgba(0,0,0,.65) 60%),
+    url("https://drive.google.com/uc?export=view&id=1ZLKxi8b-xHyaefoESrgg66BABqz546t-") center/cover no-repeat;
+  height:360px;border-radius:18px;border:1px solid #112553;
+  display:grid;place-items:center;padding:0 20px;
+}
+.hero h1{font-size:56px;line-height:1.02;margin:0 0 14px;text-shadow:0 4px 24px rgba(0,0,0,.4)}
+.hero .cta{display:inline-block;padding:14px 20px;border-radius:12px;background:linear-gradient(180deg,#ffd86b,#f5c518);color:#0b0b0b;font-weight:900;text-decoration:none;border:1px solid #f3c015;box-shadow:0 18px 52px rgba(245,197,24,.45)}
 
-/* League pills under hero */
-.pills{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:18px}
-.pill{padding:9px 14px; border-radius:999px; border:1px solid var(--ring); background:#0c1736; color:#cfe1ff; cursor:pointer}
-.pill.active{background:var(--gold); color:#111; border-color:var(--gold)}
+/* Section titles */
+.section{margin-top:28px}
+.section h2{margin:0 0 12px;font-size:22px}
 
-/* Filters row (simple) */
-.controls{display:grid; grid-template-columns:repeat(4,1fr) 1fr; gap:10px; margin:18px 0}
-.field label{display:block; font-size:12px; color:#9fb0cc; margin-bottom:6px}
-select,input[type="search"]{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--ring); background:#0c1736; color:var(--ink)}
+/* Live Auctions (3 cards like mock) */
+.live-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(180deg,#0f1f41,#0b1530);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
+.card .media{height:160px;background:#0b1734;border-bottom:1px solid #17315f;display:grid;place-items:center}
+.card .media svg{width:110px;height:110px}
+.card .body{padding:12px 14px}
+.card .title{display:flex;justify-content:space-between;align-items:center}
+.card .title strong{font-size:16px}
+.card .title span{font-weight:800}
+.card .sub{font-size:13px;color:#cfe1ff;opacity:.9;margin-top:4px}
+.meta2{margin-top:8px;display:flex;gap:14px;color:#a9b6d3;font-size:12px}
 
-/* Grid + Cards (minimal, like the mock) */
-.grid{border:1px solid #132a58; border-radius:20px; background:linear-gradient(180deg,#0c193a,#0a142c)}
-.grid-head{display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #132a58}
-.grid-body{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; padding:16px}
-.card{border:1px solid var(--edge); border-radius:16px; overflow:hidden; background:rgba(255,255,255,.03)}
-.card .thumb{display:grid; place-items:center; height:180px; background:linear-gradient(180deg,rgba(51,94,234,.12),transparent); border-bottom:1px solid #163366}
-.card .thumb svg{width:110px; height:110px}
-.meta{padding:14px 16px; text-align:center}
-.asset{color:var(--gold2); font-weight:700; margin-top:2px}
-.small{color:#c9d6f3; opacity:.9; margin-top:2px}
-.price{font-weight:900; margin-top:6px}
+/* How It Works */
+.hiw{margin:36px 0;border-top:1px solid #0f2246;padding-top:24px}
+.hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.hiw .tile{background:linear-gradient(180deg,#0f1f41,#0b1530);border:1px solid var(--edge);border-radius:14px;padding:18px;text-align:center}
+.hiw .icon{font-size:40px;margin-bottom:6px}
+.hiw h3{margin:8px 0 4px}
+.hiw p{margin:0;color:#b7c6e3}
+
+/* League pills + filters + full listings (our functionality) */
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--ring);background:#0c1736;color:#dbe6ff;cursor:pointer}
+.pill.active{background:var(--gold);color:#111;border-color:var(--gold)}
+.controls{display:grid;grid-template-columns:repeat(4,1fr) 1fr;gap:10px;margin:14px 0}
+.field label{display:block;font-size:12px;color:#9fb0cc;margin-bottom:6px}
+select,input[type="search"]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--ring);background:#0c1736;color:var(--ink);outline:none}
+.grid{border:1px solid #122a56;border-radius:18px;background:linear-gradient(180deg,#0c1836,#09132a);margin-top:10px}
+.grid-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #122a56}
+.grid-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:14px}
+.bigcard{border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.03)}
+.bigcard .thumb{display:grid;place-items:center;height:180px;background:linear-gradient(180deg,rgba(51,94,234,.12),transparent);border-bottom:1px solid #163366}
+.bigcard .thumb svg{width:112px;height:112px}
+.bigcard .meta{padding:14px 16px;text-align:center}
+.bigcard .asset{color:var(--gold2);font-weight:800}
+.bigcard .price{font-weight:900;margin-top:6px}
+
+/* Modal (simple) */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:90}
+.modal{width:min(760px,92vw);background:linear-gradient(180deg,#0d1f41,#0a1430);border:1px solid #163061;border-radius:16px;box-shadow:0 30px 100px rgba(0,0,0,.55);overflow:hidden}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #163061}
+.modal-body{padding:14px}
+.modal-close{background:transparent;border:1px solid #2b4f9e;color:#cfe1ff;border-radius:8px;padding:6px 10px;cursor:pointer}
+.notice{display:flex;gap:10px;align-items:flex-start;background:#0b1734;border:1px dashed #2b4f9e;border-radius:12px;padding:10px;margin:10px 0;color:#cfe1ff}
 
 /* Ticker */
-.ticker-wrap{position:relative; margin:18px 0 10px; border-top:1px solid #122a56; border-bottom:1px solid #122a56; background:#0a142b}
-.ticker-title{position:absolute; left:16px; top:-10px; background:#0a142b; color:#9fb0cc; font-size:12px; padding:2px 8px; border:1px solid var(--ring); border-radius:6px; letter-spacing:.12em}
-.ticker-viewport{overflow:hidden; white-space:nowrap; padding:10px 0; margin-left:8px}
-.ticker{display:inline-flex; gap:26px; will-change:transform}
-.ticker-item{display:inline-flex; gap:8px; align-items:center; background:#0e1f41; border:1px solid var(--ring); border-radius:999px; padding:6px 10px; font-size:13px}
-.ticker-item .dot{width:6px; height:6px; border-radius:999px; background:#17d3a5}
-.ticker-item .link{color:#cfe1ff; text-decoration:none}
+.ticker-wrap{position:relative;margin:22px 0 14px;border-top:1px solid #122a56;border-bottom:1px solid #122a56;background:#0a142b}
+.ticker-title{position:absolute;left:16px;top:-10px;background:#0a142b;color:#9fb0cc;font-size:12px;padding:2px 8px;border:1px solid var(--ring);border-radius:6px;letter-spacing:.12em}
+.ticker-viewport{overflow:hidden;white-space:nowrap;padding:10px 0;margin-left:8px}
+.ticker{display:inline-flex;gap:26px;will-change:transform}
+.ticker-item{display:inline-flex;gap:8px;align-items:center;background:#0e1f41;border:1px solid var(--ring);border-radius:999px;padding:6px 10px;font-size:13px}
+.ticker-item .dot{width:6px;height:6px;border-radius:999px;background:#17d3a5}
+.ticker-item .link{color:#cfe1ff;text-decoration:none}
 
 /* Footer */
-.foot{padding:16px; text-align:center; color:#9fb0cc; border-top:1px solid #122a56}
+.foot{padding:18px;text-align:center;color:#9fb0cc;border-top:1px solid #122a56}
 
 /* Responsive */
 @media (max-width:980px){
-  .hero h1{font-size:32px}
+  .hero-bg{height:320px}
+  .hero h1{font-size:40px}
+  .live-row{grid-template-columns:1fr}
   .controls{grid-template-columns:1fr 1fr 1fr}
   .grid-body{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
 }
 </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <!-- Simple interlocked SW -->
-        <svg class="sw" viewBox="0 0 64 64" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd56a"/><stop offset="1" stop-color="#f5c518"/></linearGradient></defs>
-          <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#g)"/>
-          <path d="M20 22 h24 v6 H26 v2 h10 q8 0 8 7 q0 8 -12 8 h-16 v-6 h16 q6 0 6-3 q0-3 -6-3 h-8 q-8 0 -8-7 q0-7 8-7 z" fill="#0b0b0b"/>
-        </svg>
-        <h2 class="title">SPONSORWINS</h2>
+        <div class="logoMark">Sv</div>
+        <div class="brandname">SponsorWins</div>
       </div>
+      <nav class="nav">
+        <a href="#hiw">How It Works</a>
+        <a href="#browse">Browse Auctions</a>
+        <a class="btn" href="#" id="signIn">Sign In</a>
+      </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Bid. Win. Sponsor the Game.</h1>
-      <p>Season-long packages, single-game features, and arena takeovers across NFL, NBA, NHL, MLB, and MLS.</p>
-      <a href="#" class="cta" id="verifyBtn">Create a Verified Account to Bid</a>
-
-      <!-- LEAGUE PILLS (centered) -->
-      <div id="leaguePills" class="pills" style="margin-top:22px"></div>
-    </section>
-
-    <!-- FILTERS -->
-    <section class="controls" aria-label="Filters">
-      <div class="field"><label for="leagueSelect">League</label><select id="leagueSelect"></select></div>
-      <div class="field"><label for="teamSelect">Team</label><select id="teamSelect"></select></div>
-      <div class="field"><label for="assetSelect">Asset</label><select id="assetSelect"></select></div>
-      <div class="field"><label for="search">Search</label><input id="search" type="search" placeholder="Search by team, stadium, asset"/></div>
-      <div class="field"><label for="sort">Sort</label><select id="sort">
-        <option value="relevance">Relevance</option>
-        <option value="priceAsc">Price ↑</option>
-        <option value="priceDesc">Price ↓</option>
-      </select></div>
-    </section>
-
-    <!-- LISTINGS -->
-    <section class="grid" aria-label="Listings">
-      <div class="grid-head">
-        <strong>Featured Sponsorships</strong>
-        <button id="shuffle" class="pill" type="button" style="border-radius:10px">Shuffle</button>
+    <!-- HERO (exact structure) -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg">
+        <div>
+          <h1>Bid. Win.<br/>Sponsor the Game.</h1>
+          <a href="#" class="cta" id="verifyCta">Create a Verified Account to Bid</a>
+        </div>
       </div>
-      <div id="grid" class="grid-body"></div>
+    </section>
+
+    <!-- LIVE AUCTIONS (3 cards) -->
+    <section class="section" aria-label="Live Auctions">
+      <h2>Live Auctions</h2>
+      <div id="liveRow" class="live-row"></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="hiw" class="hiw section" aria-label="How It Works">
+      <h2>How It Works</h2>
+      <div class="hiw-grid">
+        <div class="tile">
+          <div class="icon">📣</div>
+          <h3>BID</h3>
+          <p>Browse and bid on high-profile sponsorships.</p>
+        </div>
+        <div class="tile">
+          <div class="icon">🎛️</div>
+          <h3>WIN</h3>
+          <p>Win and lock in your sponsorship deal in real time.</p>
+        </div>
+        <div class="tile">
+          <div class="icon">👕</div>
+          <h3>SPONSOR</h3>
+          <p>Activate your brand across jerseys, LED boards, more.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BROWSE (our functional area) -->
+    <section id="browse" class="section" aria-label="Browse">
+      <h2>Browse Auctions</h2>
+      <div id="leaguePills" class="pills" aria-label="Leagues"></div>
+
+      <div class="controls" aria-label="Filters">
+        <div class="field"><label for="leagueSelect">League</label><select id="leagueSelect"></select></div>
+        <div class="field"><label for="teamSelect">Team</label><select id="teamSelect"></select></div>
+        <div class="field"><label for="assetSelect">Asset</label><select id="assetSelect"></select></div>
+        <div class="field"><label for="search">Search</label><input id="search" type="search" placeholder="Search by team, stadium, asset"/></div>
+        <div class="field"><label for="sort">Sort</label><select id="sort">
+          <option value="relevance">Relevance</option>
+          <option value="priceAsc">Price ↑</option>
+          <option value="priceDesc">Price ↓</option>
+        </select></div>
+      </div>
+
+      <div class="grid">
+        <div class="grid-head">
+          <strong>Featured Sponsorships</strong>
+          <button id="shuffle" class="pill" type="button" style="border-radius:10px">Shuffle</button>
+        </div>
+        <div id="grid" class="grid-body"></div>
+      </div>
     </section>
   </main>
 
@@ -134,8 +196,22 @@ select,input[type="search"]{width:100%; padding:10px 12px; border-radius:12px; b
 
   <footer class="foot"><p>© 2025 SponsorWins — Prototype Demo</p></footer>
 
+  <!-- MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <strong id="mTitle">Listing</strong>
+        <button class="modal-close" id="mClose" type="button" aria-label="Close">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="notice"><strong>Verified bidders only.</strong>&nbsp;Create an account and verify to place live bids in production.</div>
+        <div id="mMeta"></div>
+      </div>
+    </div>
+  </div>
+
 <script>
-/* ---- Data ---- */
+/* ---------- Data ---------- */
 const DATA=(()=>{const core=["Fixed Signage","LED Signage","Naming Rights","Jersey Patch","Helmet Logo","Concourse Signage","Videoboard Signage","Concession Areas"];
 const extras={MLB:["Outfield Wall Signage"],NHL:["Dasher-Board Signage","In-Ice Signage"],MLS:["Pitch-Level Signage"]};
 const leagues={
@@ -148,49 +224,72 @@ const ranges={NFL:{low:25000,high:10000000},NBA:{low:15000,high:8000000},MLB:{lo
 const brands=["Glacier Water Co.","Solarix Energy","Frontier Bank","Skyline Tech","Maverick Brewing","Trailblazer Insurance","Rapid Ride E-Bikes","Aurora Health","Goldline Logistics","Oceanic Airlines","Beacon Coffee","Summit Outdoors","Blue Harbor Media","NovaCloud","Atlas Freight"];
 function assetsFor(l){return core.concat(extras[l]||[]);} return {leagues,ranges,brands,assetsFor};})();
 
-/* ---- Visual helpers ---- */
+/* ---------- Helpers & visuals ---------- */
 function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*131+s.charCodeAt(i))>>>0;return h.toString(16);}
 function hue(s,sh=0){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return ((h%360)+sh)%360;}
 function crestSVG(team){const id='g'+hash(team), base=`hsl(${hue(team)}deg 65% 45%)`, acc=`hsl(${hue(team,30)}deg 70% 60%)`;
 const initials=team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-return `<svg viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/></linearGradient></defs><path d="M48 8 L86 28 L74 72 L48 88 L22 72 L10 28 Z" fill="url(#${id})" stroke="rgba(255,255,255,.25)" stroke-width="2"/><circle cx="48" cy="48" r="14" fill="rgba(0,0,0,.25)"/><text x="48" y="54" font-size="22" font-weight="900" text-anchor="middle" fill="white">${initials}</text></svg>`;}
-
-/* ---- DOM ---- */
-const pills=document.getElementById('leaguePills'), leagueSel=document.getElementById('leagueSelect'),
-teamSel=document.getElementById('teamSelect'), assetSel=document.getElementById('assetSelect'),
-grid=document.getElementById('grid'), shuffle=document.getElementById('shuffle'),
-ticker=document.getElementById('ticker'), search=document.getElementById('search'), sort=document.getElementById('sort');
-
-document.getElementById('verifyBtn').onclick=(e)=>{e.preventDefault(); alert('Prototype: account verification flow');};
-
+return `<svg viewBox="0 0 112 112" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/></linearGradient></defs><path d="M56 10 L100 34 L86 84 L56 102 L26 84 L12 34 Z" fill="url(#${id})" stroke="rgba(255,255,255,.24)" stroke-width="2"/><circle cx="56" cy="56" r="16" fill="rgba(0,0,0,.25)"/><text x="56" y="62" font-size="24" font-weight="900" text-anchor="middle" fill="white">${initials}</text></svg>`;}
 function currency(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
 function randIn(l){const r=DATA.ranges[l],base=Math.random()*(r.high-r.low)+r.low,step=base>50000?1000:100;return Math.round(base/step)*step;}
 function randBrand(){const a=DATA.brands;return a[Math.floor(Math.random()*a.length)];}
 
-/* Build league pills + selects */
+/* ---------- Header actions ---------- */
+document.getElementById('signIn').onclick=e=>{e.preventDefault();alert('Prototype: Sign-in dialog');};
+document.getElementById('verifyCta').onclick=e=>{e.preventDefault();alert('Prototype: Verification flow');};
+
+/* ---------- Build Live Auctions row (3 cards) ---------- */
+const liveRow=document.getElementById('liveRow');
+function liveCard(title, asset, price){
+  const el=document.createElement('article'); el.className='card';
+  el.innerHTML=`<div class="media"></div>
+    <div class="body">
+      <div class="title"><strong>${title}</strong><span>${currency(price)}</span></div>
+      <div class="sub">${asset}</div>
+      <div class="meta2"><div>12 HRS</div><div>134 MIN</div></div>
+    </div>`;
+  const crest=document.createElement('div'); crest.innerHTML=crestSVG(title); el.querySelector('.media').appendChild(crest.firstChild);
+  return el;
+}
+(function seedLive(){
+  liveRow.appendChild(liveCard('Hawks','Jersey Patch',2500));
+  liveRow.appendChild(liveCard('LED BOARD','Board',5000));
+  liveRow.appendChild(liveCard('Soccer','Jersey Patch',1200));
+})();
+
+/* ---------- League pills + selects ---------- */
 const leagues=Object.keys(DATA.leagues);
-function buildPills(){pills.innerHTML=''; leagues.forEach((lg,i)=>{const b=document.createElement('button'); b.className='pill'+(i===0?' active':''); b.textContent=lg; b.onclick=()=>{[...pills.children].forEach(c=>c.classList.remove('active')); b.classList.add('active'); leagueSel.value=lg; populateTeamAsset(lg); render();}; pills.appendChild(b);});}
-function buildSelects(){leagueSel.innerHTML=''; leagues.forEach((lg,i)=>{const o=document.createElement('option'); o.value=lg; o.textContent=lg; leagueSel.appendChild(o); if(i===0) leagueSel.value=lg;}); populateTeamAsset(leagueSel.value);}
-function populateTeamAsset(lg){teamSel.innerHTML='<option value="">Any team</option>'; DATA.leagues[lg].forEach(([t,s])=>{const o=document.createElement('option'); o.value=t; o.textContent=t; o.dataset.stadium=s; teamSel.appendChild(o);}); assetSel.innerHTML='<option value="">Any asset</option>'; DATA.assetsFor(lg).forEach(a=>{const o=document.createElement('option'); o.value=a; o.textContent=a; assetSel.appendChild(o);});}
-leagueSel.onchange=()=>{[...pills.children].forEach(c=>c.classList.remove('active')); const idx=leagues.indexOf(leagueSel.value); if(idx>-1) pills.children[idx].classList.add('active'); populateTeamAsset(leagueSel.value); render();};
-teamSel.onchange=render; assetSel.onchange=render; search.oninput=render; sort.onchange=render;
+const pills=document.getElementById('leaguePills'), leagueSel=document.getElementById('leagueSelect'),
+teamSel=document.getElementById('teamSelect'), assetSel=document.getElementById('assetSelect'),
+grid=document.getElementById('grid'), shuffle=document.getElementById('shuffle');
 
-/* Listings */
-function card({lg,team,stadium,asset,price}){const el=document.createElement('article'); el.className='card';
-el.innerHTML=`<div class="thumb"></div><div class="meta"><div class="asset">${asset}</div><div class="small">${team}</div><div class="small" style="opacity:.8">${stadium}</div><div class="price">${currency(price)}</div></div>`;
-el.querySelector('.thumb').appendChild((()=>{const d=document.createElement('div'); d.innerHTML=crestSVG(team); return d.firstChild;})());
-return el;}
-function dataset(){const lg=leagueSel.value, teams=DATA.leagues[lg], assets=DATA.assetsFor(lg); const q=(search.value||'').toLowerCase(); const tf=teamSel.value||''; const af=assetSel.value||''; let list=[]; teams.forEach(([t,s])=>{assets.forEach(a=>{const hay=(t+' '+s+' '+a).toLowerCase(); if((!q||hay.includes(q))&&(!tf||tf===t)&&(!af||af===a)) list.push({lg,team:t,stadium:s,asset:a,price:randIn(lg)});});}); if(sort.value==='priceAsc') list.sort((x,y)=>x.price-y.price); if(sort.value==='priceDesc') list.sort((x,y)=>y.price-x.price); return list.slice(0,15);}
-function render(){grid.innerHTML=''; dataset().forEach(x=>grid.appendChild(card(x)));}
+function buildPills(){pills.innerHTML='';leagues.forEach((lg,i)=>{const b=document.createElement('button');b.className='pill'+(i===0?' active':'');b.textContent=lg;b.onclick=()=>{[...pills.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');leagueSel.value=lg;populateTeamAsset(lg);render();};pills.appendChild(b);});}
+function buildSelects(){leagueSel.innerHTML='';leagues.forEach((lg,i)=>{const o=document.createElement('option');o.value=lg;o.textContent=lg;leagueSel.appendChild(o);if(i===0)leagueSel.value=lg;});populateTeamAsset(leagueSel.value);}
+function populateTeamAsset(lg){teamSel.innerHTML='<option value="">Any team</option>';DATA.leagues[lg].forEach(([t,s])=>{const o=document.createElement('option');o.value=t;o.textContent=t;o.dataset.stadium=s;teamSel.appendChild(o);});assetSel.innerHTML='<option value="">Any asset</option>';DATA.assetsFor(lg).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;assetSel.appendChild(o);});}
+leagueSel.onchange=()=>{[...pills.children].forEach(c=>c.classList.remove('active'));const idx=leagues.indexOf(leagueSel.value);if(idx>-1)pills.children[idx].classList.add('active');populateTeamAsset(leagueSel.value);render();};
+teamSel.onchange=render; assetSel.onchange=render; document.getElementById('search').oninput=render; document.getElementById('sort').onchange=render;
 
-/* Ticker */
-let items=[]; let last=0; let offset=0;
+/* ---------- Listings ---------- */
+function bigCard({lg,team,stadium,asset,price}){const el=document.createElement('article');el.className='bigcard';
+el.innerHTML=`<div class="thumb"></div><div class="meta"><div class="asset">${asset}</div><div style="opacity:.9">${team}</div><div style="opacity:.75">${stadium}</div><div class="price">${currency(price)}</div></div>`;
+const holder=el.querySelector('.thumb');const svg=document.createElement('div');svg.innerHTML=crestSVG(team);holder.appendChild(svg.firstChild);
+el.onclick=()=>openModal({lg,team,stadium,asset,price});return el;}
+function dataset(){const lg=leagueSel.value, teams=DATA.leagues[lg], assets=DATA.assetsFor(lg), q=(document.getElementById('search').value||'').toLowerCase(), tf=teamSel.value||'', af=assetSel.value||''; let list=[]; teams.forEach(([t,s])=>{assets.forEach(a=>{const hay=(t+' '+s+' '+a).toLowerCase(); if((!q||hay.includes(q))&&(!tf||tf===t)&&(!af||af===a)) list.push({lg,team:t,stadium:s,asset:a,price:randIn(lg)});});}); const sort=document.getElementById('sort').value; if(sort==='priceAsc') list.sort((x,y)=>x.price-y.price); if(sort==='priceDesc') list.sort((x,y)=>y.price-x.price); return list.slice(0,15);}
+function render(){grid.innerHTML='';dataset().forEach(x=>grid.appendChild(bigCard(x)));} shuffle.onclick=render;
+
+/* ---------- Modal ---------- */
+const mBackdrop=document.getElementById('modalBackdrop'), mClose=document.getElementById('mClose'), mTitle=document.getElementById('mTitle'), mMeta=document.getElementById('mMeta');
+function openModal({lg,team,stadium,asset,price}){mTitle.textContent=`${team} — ${asset}`; mMeta.innerHTML=`<p><strong>${lg}</strong> • ${stadium}<br/>Reserve: <strong>${currency(price)}</strong></p>`; mBackdrop.style.display='flex';}
+mClose.onclick=()=>mBackdrop.style.display='none'; mBackdrop.onclick=(e)=>{if(e.target===mBackdrop) mBackdrop.style.display='none';};
+
+/* ---------- Ticker ---------- */
+const ticker=document.getElementById('ticker'); let items=[], last=0, offset=0;
 function newItem(){const lg=leagues[Math.floor(Math.random()*leagues.length)], [team]=DATA.leagues[lg][Math.floor(Math.random()*DATA.leagues[lg].length)], asset=DATA.assetsFor(lg)[Math.floor(Math.random()*DATA.assetsFor(lg).length)], price=currency(randIn(lg)), br=randBrand(); const a=document.createElement('a'); a.href="#"; a.className='link'; a.onclick=e=>e.preventDefault(); a.textContent=`${br} bid ${price} on ${asset} • ${team} (${lg})`; const span=document.createElement('span'); span.className='ticker-item'; const dot=document.createElement('span'); dot.className='dot'; span.appendChild(dot); span.appendChild(a); ticker.appendChild(span); items.push(span);}
 function seed(n=14){for(let i=0;i<n;i++) newItem();}
 function animate(ts){if(!last) last=ts; const dt=ts-last; last=ts; const speed=50; offset-=(speed*dt/1000); ticker.style.transform=`translateX(${offset}px)`; if(items.length){const first=items[0]; const rect=first.getBoundingClientRect(); const holder=ticker.parentElement.getBoundingClientRect(); if(rect.right<holder.left){const w=first.offsetWidth+26; ticker.removeChild(first); items.shift(); offset+=w;}} if(Math.random()<dt/5000){newItem();} requestAnimationFrame(animate);}
 
-/* Init */
-buildPills(); buildSelects(); render(); shuffle.onclick=render; seed(14); requestAnimationFrame(animate);
+/* ---------- Init ---------- */
+buildPills(); buildSelects(); render(); seed(14); requestAnimationFrame(animate);
 </script>
 </body>
 </html>
