@@ -79,3 +79,11 @@ footer {
   font-size: 0.8rem;
   color: #ccc;
 }
+/* --- Asset scene visuals (full-bleed) --- */
+.card .media,
+.bigcard .thumb { background:#0a1430; padding:0; }
+.card .media svg,
+.bigcard .thumb svg { display:block; width:100%; height:100%; }
+.card .media { height:180px; }
+.bigcard .thumb { height:200px; }
+
