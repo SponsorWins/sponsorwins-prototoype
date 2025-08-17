@@ -238,6 +238,114 @@ function randBrand(){const a=DATA.brands;return a[Math.floor(Math.random()*a.len
 document.getElementById('signIn').onclick=e=>{e.preventDefault();alert('Prototype: Sign-in dialog');};
 document.getElementById('verifyCta').onclick=e=>{e.preventDefault();alert('Prototype: Verification flow');};
 
+<script>
+// Generate a richer mock image based on asset type + team initials
+function crestInitials(team){ return team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
+function colorFor(team){ const h=[...team].reduce((a,c)=>a+c.charCodeAt(0),0)%360; return [`hsl(${h} 70% 52%)`,`hsl(${(h+28)%360} 70% 62%)`]; }
+
+function sceneSVG(asset, team){
+  const [base, acc] = colorFor(team);
+  const inits = crestInitials(team);
+  const defs = `
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#0f2148"/><stop offset="1" stop-color="#07142c"/>
+      </linearGradient>
+      <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${acc}"/><stop offset="1" stop-color="${base}"/>
+      </linearGradient>
+      <clipPath id="r10"><rect x="0" y="0" width="100%" height="100%" rx="10"/></clipPath>
+    </defs>`;
+
+  // default background
+  let art = `<rect width="100%" height="100%" fill="url(#bg)"/>`;
+
+  if (/Jersey Patch/i.test(asset)) {
+    // Basketball jersey torso with square patch showing team initials
+    art += `
+      <g transform="translate(0,0)">
+        <rect x="20" y="18" width="320" height="180" rx="10" fill="#0c1736" stroke="#1b3a78"/>
+        <path d="M70 40 q50-40 120 0 q70 40 120 0 v120 h-240z" fill="#122a58"/>
+        <rect x="250" y="28" width="52" height="52" rx="8" fill="${acc}" stroke="${base}" stroke-width="3"/>
+        <text x="276" y="60" font-size="22" text-anchor="middle" fill="#0a0a0a" font-weight="900">${inits}</text>
+        <text x="40" y="54" font-size="18" fill="#cfe1ff" opacity=".9">AUTHENTIC JERSEY</text>
+      </g>`;
+  } else if (/Helmet Logo/i.test(asset)) {
+    // Football helmet side profile with logo circle
+    art += `
+      <g transform="translate(0,0)">
+        <path d="M60 150 q0-90 120-90 q90 0 120 60 v70 h-44 v-22 q-42 18-106 18 q-54 0 -90 -36z"
+              fill="#142a56" stroke="#2b4fa0" stroke-width="4"/>
+        <circle cx="150" cy="120" r="22" fill="white" stroke="${base}" stroke-width="4"/>
+        <text x="150" y="126" font-size="18" text-anchor="middle" font-weight="900" fill="${base}">${inits}</text>
+        <circle cx="220" cy="150" r="10" fill="#0b0b0b"/><circle cx="220" cy="150" r="4" fill="#9aa7c8"/>
+      </g>`;
+  } else if (/LED/i.test(asset)) {
+    // Arena LED ribbon board
+    art += `
+      <rect x="20" y="80" width="320" height="28" rx="6" fill="#05112a" stroke="#21408a"/>
+      <rect x="20" y="80" width="320" height="28" rx="6" fill="url(#glow)" opacity=".25"/>
+      <text x="180" y="99" font-size="16" text-anchor="middle" fill="#cfe1ff" font-weight="800">LED RIBBON BOARD • ${inits}</text>`;
+  } else if (/Outfield Wall/i.test(asset)) {
+    // MLB outfield wall with ad panels
+    art += `
+      <rect x="0" y="140" width="360" height="40" fill="#083a2a"/>
+      <rect x="16" y="144" width="80" height="28" rx="4" fill="${acc}"/>
+      <rect x="108" y="144" width="100" height="28" rx="4" fill="${base}"/>
+      <rect x="222" y="144" width="120" height="28" rx="4" fill="#ffe082"/>
+      <text x="180" y="128" font-size="18" text-anchor="middle" fill="#dfe9ff">OUTFIELD WALL SIGNAGE</text>`;
+  } else if (/Dasher-Board/i.test(asset)) {
+    // NHL dasher boards along the ice
+    art += `
+      <rect x="0" y="150" width="360" height="30" fill="#ffffff" />
+      <rect x="12" y="154" width="80" height="22" fill="${acc}" />
+      <rect x="104" y="154" width="100" height="22" fill="${base}" />
+      <rect x="216" y="154" width="130" height="22" fill="#ffe082" />
+      <rect x="0" y="180" width="360" height="10" fill="#cfe6ff" opacity=".6"/>
+      <text x="180" y="130" font-size="16" text-anchor="middle" fill="#dfe9ff">DASHER-BOARD SIGNAGE</text>`;
+  } else if (/In-Ice/i.test(asset)) {
+    // NHL in-ice logo circle
+    art += `
+      <circle cx="180" cy="110" r="58" fill="#e8f3ff" opacity=".85" stroke="#9cc"/>
+      <text x="180" y="114" font-size="28" text-anchor="middle" font-weight="900" fill="${base}">${inits}</text>
+      <text x="180" y="150" font-size="14" text-anchor="middle" fill="#cfe1ff">IN-ICE LOGO</text>`;
+  } else if (/Pitch-Level/i.test(asset)) {
+    // MLS pitch-level board with player silhouette
+    art += `
+      <rect x="0" y="150" width="360" height="30" fill="#0c5a2a"/>
+      <rect x="20" y="154" width="320" height="22" rx="4" fill="${base}" opacity=".9"/>
+      <text x="180" y="170" font-size="13" text-anchor="middle" fill="#0b0b0b" font-weight="900">PITCH-LEVEL SIGNAGE</text>
+      <path d="M300 80 q-12 10 -10 26 l8 12 h16 l8-12 q2-16 -10-26z" fill="#1b2c57" opacity=".8"/>`;
+  } else if (/Videoboard/i.test(asset)) {
+    // Big videoboard
+    art += `
+      <rect x="40" y="24" width="280" height="130" rx="10" fill="#111" stroke="#333"/>
+      <rect x="48" y="32" width="264" height="114" rx="8" fill="#213a78"/>
+      <text x="180" y="100" font-size="18" text-anchor="middle" fill="#dbe7ff" font-weight="800">CENTER-HUNG VIDEOBOARD</text>`;
+  } else if (/Concourse|Concession/i.test(asset)) {
+    // Concourse area marquee
+    art += `
+      <rect x="24" y="44" width="312" height="60" rx="8" fill="#1a2f5a"/>
+      <text x="180" y="82" font-size="18" text-anchor="middle" fill="#dbe7ff">CONCOURSE / CONCESSION</text>`;
+  } else if (/Fixed Signage/i.test(asset)) {
+    art += `
+      <rect x="40" y="70" width="280" height="46" rx="8" fill="#123a6a"/>
+      <text x="180" y="98" font-size="18" text-anchor="middle" fill="#dbe7ff">FIXED SIGNAGE</text>`;
+  } else {
+    // generic fallback
+    art += `<text x="180" y="110" font-size="18" text-anchor="middle" fill="#dbe7ff">SPONSORSHIP ASSET</text>`;
+  }
+
+  // Add subtle crest tag in a corner
+  art += `
+    <rect x="14" y="14" width="70" height="28" rx="6" fill="url(#glow)" opacity=".85" />
+    <text x="49" y="33" font-size="16" text-anchor="middle" font-weight="900" fill="#0b0b0b">${inits}</text>
+  `;
+
+  return `<svg viewBox="0 0 360 200" role="img" aria-label="${asset} mock">${defs}${art}</svg>`;
+}
+</script>
+  
 /* ---------- Build Live Auctions row (3 cards) ---------- */
 const liveRow=document.getElementById('liveRow');
 function liveCard(title, asset, price){
