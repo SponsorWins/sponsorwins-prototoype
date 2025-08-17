@@ -348,22 +348,26 @@ function sceneSVG(asset, team){
   
 /* ---------- Build Live Auctions row (3 cards) ---------- */
 const liveRow=document.getElementById('liveRow');
-function liveCard(title, asset, price){
+<script>
+function liveCard(team, asset, price){
   const el=document.createElement('article'); el.className='card';
-  el.innerHTML=`<div class="media"></div>
+  el.innerHTML=`<div class="media">${sceneSVG(asset, team)}</div>
     <div class="body">
-      <div class="title"><strong>${title}</strong><span>${currency(price)}</span></div>
+      <div class="title"><strong>${team}</strong><span>${currency(price)}</span></div>
       <div class="sub">${asset}</div>
       <div class="meta2"><div>12 HRS</div><div>134 MIN</div></div>
     </div>`;
-  const crest=document.createElement('div'); crest.innerHTML=crestSVG(title); el.querySelector('.media').appendChild(crest.firstChild);
   return el;
 }
+
+// Seed with three impactful assets (jersey / LED / front-of-kit)
 (function seedLive(){
-  liveRow.appendChild(liveCard('Hawks','Jersey Patch',2500));
-  liveRow.appendChild(liveCard('LED BOARD','Board',5000));
-  liveRow.appendChild(liveCard('Soccer','Jersey Patch',1200));
+  liveRow.innerHTML = "";
+  liveRow.appendChild(liveCard('Portland Pioneers', 'Jersey Patch', 25000));
+  liveRow.appendChild(liveCard('Las Vegas Vipers', 'LED Signage', 32000));
+  liveRow.appendChild(liveCard('Miami Waves', 'Pitch-Level Signage', 18000));
 })();
+</script>
 
 /* ---------- League pills + selects ---------- */
 const leagues=Object.keys(DATA.leagues);
