@@ -384,7 +384,8 @@ teamSel.onchange=render; assetSel.onchange=render; document.getElementById('sear
 /* ---------- Listings ---------- */
 function bigCard({lg,team,stadium,asset,price}){const el=document.createElement('article');el.className='bigcard';
 el.innerHTML=`<div class="thumb"></div><div class="meta"><div class="asset">${asset}</div><div style="opacity:.9">${team}</div><div style="opacity:.75">${stadium}</div><div class="price">${currency(price)}</div></div>`;
-const holder=el.querySelector('.thumb');const svg=document.createElement('div');svg.innerHTML=crestSVG(team);holder.appendChild(svg.firstChild);
+const holder=el.querySelector('.thumb');
+holder.innerHTML = sceneSVG(asset, team);
 el.onclick=()=>openModal({lg,team,stadium,asset,price});return el;}
 function dataset(){const lg=leagueSel.value, teams=DATA.leagues[lg], assets=DATA.assetsFor(lg), q=(document.getElementById('search').value||'').toLowerCase(), tf=teamSel.value||'', af=assetSel.value||''; let list=[]; teams.forEach(([t,s])=>{assets.forEach(a=>{const hay=(t+' '+s+' '+a).toLowerCase(); if((!q||hay.includes(q))&&(!tf||tf===t)&&(!af||af===a)) list.push({lg,team:t,stadium:s,asset:a,price:randIn(lg)});});}); const sort=document.getElementById('sort').value; if(sort==='priceAsc') list.sort((x,y)=>x.price-y.price); if(sort==='priceDesc') list.sort((x,y)=>y.price-x.price); return list.slice(0,15);}
 function render(){grid.innerHTML='';dataset().forEach(x=>grid.appendChild(bigCard(x)));} shuffle.onclick=render;
