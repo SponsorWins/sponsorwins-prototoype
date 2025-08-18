@@ -3,17 +3,20 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SponsorWins — Phase 2 Prototype</title>
+<title>SponsorWins — Bid. Win. Sponsor the Game.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#f6f8ff; --muted:#a8b6d6; --gold:#f5c518; --gold2:#ffd86b; --ring:#1d2b56; --edge:rgba(255,255,255,.08);
+  --ink:#f6f8ff; --muted:#a8b6d6; --gold:#f5c518; --gold2:#ffd86b;
+  --ring:#1d2b56; --edge:rgba(255,255,255,.08);
 }
-*{box-sizing:border-box} html,body{margin:0;padding:0;background:
-  radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #050b18 100%),
-  radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.10), transparent 62%);
-  color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-
+*{box-sizing:border-box}
+html,body{
+  margin:0;padding:0;background:
+    radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #050b18 100%),
+    radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.10), transparent 62%);
+  color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+}
 /* Header */
 .header{position:sticky;top:0;z-index:60; backdrop-filter:saturate(120%) blur(6px);
   background:linear-gradient(180deg,rgba(6,11,24,.92),rgba(6,11,24,.70)); border-bottom:1px solid #0f2147}
@@ -46,19 +49,23 @@
 .section{margin-top:28px}
 .section h2{margin:0 0 12px;font-size:22px}
 .live-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card, .bigcard{background:linear-gradient(180deg,#0f1f41,#0b1530);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
-.card .media, .bigcard .thumb{height:200px;background:#0a1430;padding:0;display:block}
-.card .body, .bigcard .meta{padding:12px 14px}
+
+.card,.bigcard{background:linear-gradient(180deg,#0f1f41,#0b1530);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
+.card .media,.bigcard .thumb{height:200px;background:#0a1430;padding:0;display:block}
+.card .body,.bigcard .meta{padding:12px 14px}
 .card .title{display:flex;justify-content:space-between;align-items:center}
-.card .title strong{font-size:16px} .card .title span{font-weight:800}
+.card .title strong{font-size:16px}
+.card .title span{font-weight:800}
 .card .sub{font-size:13px;color:#cfe1ff;opacity:.9;margin-top:4px}
 .meta2{margin-top:8px;display:flex;gap:14px;color:#a9b6d3;font-size:12px}
 
+/* Filters */
 .controls{display:grid;grid-template-columns:repeat(4,1fr) 1fr;gap:10px;margin:20px 0}
 .field label{display:block;font-size:12px;color:#9fb0cc;margin-bottom:6px}
 select,input[type="search"]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--ring);background:#0c1736;color:#fff}
 select:focus,input:focus{outline:2px solid #2b4f9e}
 
+/* Listings grid */
 .grid{border:1px solid #132a58;border-radius:22px;background:linear-gradient(180deg,#0c1836,#09142c)}
 .grid-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #132a58}
 .grid-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:16px}
@@ -99,7 +106,7 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
   <header class="header">
     <div class="header-inner">
       <div class="brand">
-        <!-- Interlocked SW badge -->
+        <!-- Interlocked SW badge (inline SVG, always loads) -->
         <svg width="56" height="56" viewBox="0 0 64 64" aria-label="SponsorWins logo" role="img">
           <defs>
             <linearGradient id="sw-grad" x1="0" y1="0" x2="1" y2="1">
@@ -124,7 +131,6 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
       <h1>Bid. Win. Sponsor the Game.</h1>
       <p>Season-long packages, single-game features, and arena takeovers across NFL, NBA, NHL, MLB, and MLS.</p>
       <a href="#" class="cta" id="verifyBtn">Create a Verified Account to Bid</a>
-      <!-- League pills -->
       <div id="leaguePills" class="pills" style="margin-top:22px"></div>
     </section>
 
@@ -180,7 +186,7 @@ select:focus,input:focus{outline:2px solid #2b4f9e}
   </div>
 
 <script>
-/* -------- Data -------- */
+/* ---------- Data ---------- */
 const DATA=(()=>{const core=["Fixed Signage","LED Signage","Naming Rights","Jersey Patch","Helmet Logo","Concourse Signage","Videoboard Signage","Concession Areas"];
 const extras={MLB:["Outfield Wall Signage"],NHL:["Dasher-Board Signage","In-Ice Signage"],MLS:["Pitch-Level Signage"]};
 const leagues={
@@ -193,7 +199,7 @@ const ranges={NFL:{low:25000,high:10000000},NBA:{low:15000,high:8000000},MLB:{lo
 const brands=["Glacier Water Co.","Solarix Energy","Frontier Bank","Skyline Tech","Maverick Brewing","Trailblazer Insurance","Rapid Ride E-Bikes","Aurora Health","Goldline Logistics","Oceanic Airlines","Beacon Coffee","Summit Outdoors","Blue Harbor Media","NovaCloud","Atlas Freight"];
 function assetsFor(l){return core.concat(extras[l]||[]);} return {leagues,ranges,brands,assetsFor};})();
 
-/* -------- Visual helpers & asset scenes (inline SVG) -------- */
+/* ---------- Visual helpers & asset scenes (inline SVG) ---------- */
 function crestInitials(team){ return team.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
 function colorFor(team){ const h=[...team].reduce((a,c)=>a+c.charCodeAt(0),0)%360; return [`hsl(${h} 70% 52%)`,`hsl(${(h+28)%360} 70% 62%)`]; }
 
@@ -284,15 +290,15 @@ function sceneSVG(asset, team){
 }
 function sceneInline(asset, team){ const wrap=document.createElement('div'); wrap.innerHTML=sceneSVG(asset,team); return wrap.firstChild; }
 
-/* -------- Utilities -------- */
+/* ---------- Utilities ---------- */
 function currency(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
 function randIn(l){const r=DATA.ranges[l],base=Math.random()*(r.high-r.low)+r.low,step=base>50000?1000:100;return Math.round(base/step)*step;}
 function randBrand(){const a=DATA.brands;return a[Math.floor(Math.random()*a.length)];}
 
-/* -------- Header / CTA -------- */
+/* ---------- Header / CTA ---------- */
 document.getElementById('verifyBtn').onclick=(e)=>{e.preventDefault(); alert('Prototype: account verification flow');};
 
-/* -------- Live Auctions -------- */
+/* ---------- Live Auctions ---------- */
 const liveRow=document.getElementById('liveRow');
 function liveCard(team, asset, price){
   const el=document.createElement('article'); el.className='card';
@@ -312,7 +318,7 @@ function liveCard(team, asset, price){
   liveRow.appendChild(liveCard('Miami Waves', 'Pitch-Level Signage', 18000));
 })();
 
-/* -------- League pills + filters + listings -------- */
+/* ---------- League pills + filters + listings ---------- */
 const pills=document.getElementById('leaguePills'), leagueSel=document.getElementById('leagueSelect'),
 teamSel=document.getElementById('teamSelect'), assetSel=document.getElementById('assetSelect'),
 grid=document.getElementById('grid'), shuffle=document.getElementById('shuffle'),
@@ -357,12 +363,12 @@ function dataset(){
 function render(){ grid.innerHTML=''; dataset().forEach(x=>grid.appendChild(bigCard(x))); }
 shuffle.onclick=render;
 
-/* -------- Modal -------- */
+/* ---------- Modal ---------- */
 const mBackdrop=document.getElementById('modalBackdrop'), mClose=document.getElementById('mClose'), mTitle=document.getElementById('mTitle'), mMeta=document.getElementById('mMeta');
 function openModal({lg,team,stadium,asset,price}){mTitle.textContent=`${team} — ${asset}`; mMeta.innerHTML=`<p><strong>${lg}</strong> • ${stadium}<br/>Reserve: <strong>${currency(price)}</strong></p>`; mBackdrop.style.display='flex';}
 mClose.onclick=()=>mBackdrop.style.display='none'; mBackdrop.onclick=(e)=>{if(e.target===mBackdrop) mBackdrop.style.display='none';};
 
-/* -------- Ticker -------- */
+/* ---------- Ticker ---------- */
 let items=[]; let last=0; let offset=0;
 function newItem(){
   const lg=leagues[Math.floor(Math.random()*leagues.length)];
@@ -388,7 +394,7 @@ function animate(ts){
   requestAnimationFrame(animate);
 }
 
-/* -------- Init -------- */
+/* ---------- Init ---------- */
 (function init(){
   buildPills(); buildSelects(); render();
   seed(14); requestAnimationFrame(animate);
