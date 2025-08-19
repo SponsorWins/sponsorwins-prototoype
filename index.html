@@ -3,67 +3,67 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>SponsorWins</title>
+<title>SponsorWins — Bid. Win. Sponsor the Game.</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg1:#0b1630; --bg2:#050b18; --ray:#162b66; --gold:#f5c518; --gold2:#ffd86b;
-  --ink:#f6f8ff; --muted:#a8b6d6; --edge:rgba(255,255,255,.08);
+  --ink:#f6f8ff; --muted:#a8b6d6; --gold:#f5c518; --gold2:#ffd86b;
+  --panel:#0c1736; --edge:#132a58; --ring:#1d2b56;
+  --bg1:#162b66; --bg2:#0b1630; --bg3:#050b18;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:
-  radial-gradient(1600px 900px at 50% -28%, #162b66 0%, #0b1630 55%, #050b18 100%),
+  radial-gradient(1600px 900px at 50% -28%, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%),
   radial-gradient(900px 360px at 72% -6%, rgba(245,197,24,.10), transparent 62%);
   color:var(--ink); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-a{text-decoration:none;color:inherit}
 
 /* Header */
 .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(8px);
-  background:linear-gradient(180deg,rgba(6,11,24,.92),rgba(6,11,24,.7));border-bottom:1px solid #0f2147}
-.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+  background:linear-gradient(180deg,rgba(6,11,24,.92),rgba(6,11,24,.72)); border-bottom:1px solid #0f2147}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center}
 .brand{display:flex;align-items:center;gap:12px}
 .brand .title{font-weight:900;letter-spacing:.22em}
 
 /* Hero */
-.hero{position:relative;max-width:1200px;margin:22px auto 0;border-radius:22px;overflow:hidden;
-  border:1px solid #132a58; box-shadow:0 30px 120px rgba(0,0,0,.45)}
-.hero-bg{
-  height:min(58vh,560px);
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65)),
-    url("https://drive.google.com/uc?export=view&id=1ZLKxi8b-xHyaefoESrgg66BABqz546t-") center/cover no-repeat;
-}
-.hero-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
-.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.04;margin:0 0 12px;text-shadow:0 10px 40px rgba(0,0,0,.5)}
+.hero{max-width:1200px;margin:24px auto 0;border-radius:22px;overflow:hidden;
+  border:1px solid var(--edge); box-shadow:0 30px 120px rgba(0,0,0,.45); position:relative}
+.hero::before{content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.62)); z-index:1}
+.hero-bg{height:min(58vh,560px);
+  background:url("https://drive.google.com/uc?export=view&id=1ZLKxi8b-xHyaefoESrgg66BABqz546t-") center/cover no-repeat;}
+.hero-content{position:absolute;inset:0;z-index:2; display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.04;margin:0 0 12px;text-shadow:0 10px 40px rgba(0,0,0,.5)}
 .hero p{color:var(--muted);margin:0 0 20px;font-size:clamp(14px,2vw,18px)}
 .cta{display:inline-block;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#0b0b0b;
   font-weight:900;border:1px solid var(--gold);border-radius:14px;padding:14px 20px;box-shadow:0 22px 60px rgba(245,197,24,.42)}
 .pills{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-.pill{padding:9px 14px;border-radius:999px;border:1px solid #1d2b56;background:#0c1736;color:#dbe6ff}
+.pill{padding:9px 14px;border-radius:999px;border:1px solid var(--ring);background:#0c1736;color:#dbe6ff}
 
-/* Section */
+/* Section wrapper */
 .wrap{max-width:1200px;margin:0 auto;padding:22px 20px}
-.section h2{margin:0 0 12px;font-size:22px}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:linear-gradient(180deg,#0f1f41,#0a1430);border:1px solid var(--edge);border-radius:16px;overflow:hidden}
-.media{height:200px;background:#0a1430}
-.meta{padding:12px 14px}
-.asset{color:var(--gold2);font-weight:800}
-.team{display:flex;align-items:center;gap:8px;margin-top:4px}
-.crest{width:22px;height:22px;border-radius:6px;background:#203767;display:grid;place-items:center;font-size:12px;font-weight:900}
-.note{color:#9fb0cc;margin-top:6px;font-size:13px;opacity:.9}
 
-/* Ticker (CSS only) */
-.ticker-wrap{position:relative;margin:26px 0 12px;border-top:1px solid #122a56;border-bottom:1px solid #122a56;background:#0a142b}
-.t-title{position:absolute;left:16px;top:-10px;background:#0a142b;color:#9fb0cc;font-size:12px;padding:2px 8px;border:1px solid #1d2b56;border-radius:6px;letter-spacing:.12em}
-.t-viewport{overflow:hidden;white-space:nowrap;padding:10px 0}
-.t-track{display:inline-block;padding-left:100%;animation:scroll 36s linear infinite}
-.t-item{display:inline-flex;gap:8px;align-items:center;background:#0e1f41;border:1px solid #1d2b56;border-radius:999px;padding:6px 10px;font-size:13px;margin-right:18px}
-.dot{width:6px;height:6px;border-radius:999px;background:#17d3a5}
-@keyframes scroll {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+/* Offerings */
+.section h2{margin:0 0 12px;font-size:22px}
+.offer-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+}
+.card{
+  background:linear-gradient(180deg,#0f1f41,#0a1430);
+  border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden;
+  display:flex; flex-direction:column; min-height:260px;
+}
+.media{height:160px; background:#0a1430; display:flex; align-items:center; justify-content:center}
+.media svg{max-width:100%; max-height:100%}
+.meta{padding:12px 14px}
+.asset{color:var(--gold2); font-weight:800}
+.team{display:flex; align-items:center; gap:8px; margin-top:4px}
+.crest{width:22px; height:22px; border-radius:6px; background:#203767; display:grid; place-items:center; font-size:12px; font-weight:900}
+.note{color:#9fb0cc; margin-top:6px; font-size:13px; opacity:.9}
 
 /* Responsive */
-@media (max-width:980px){ .row{grid-template-columns:1fr} }
+@media (max-width:1100px){ .offer-grid{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:780px){ .offer-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .offer-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -92,7 +92,7 @@ a{text-decoration:none;color:inherit}
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-content">
       <div>
         <h1>Bid. Win. Sponsor the Game.</h1>
@@ -105,30 +105,23 @@ a{text-decoration:none;color:inherit}
     </div>
   </section>
 
-  <!-- Featured strip (static visuals baked in) -->
+  <!-- Offerings (static, full-width, responsive; no cut-offs) -->
   <main class="wrap">
     <section class="section">
       <h2>Featured Sponsorships</h2>
-      <div class="row">
+      <div class="offer-grid">
         <!-- 1) Jersey Patch -->
         <article class="card">
           <div class="media">
-            <svg viewBox="0 0 360 200" role="img" aria-label="Jersey Patch">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Jersey Patch">
               <defs>
-                <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient>
-                <linearGradient id="gl1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ad3ff"/><stop offset="1" stop-color="#4aa0ff"/></linearGradient>
-                <clipPath id="r1"><rect x="0" y="0" width="360" height="200" rx="12"/></clipPath>
+                <linearGradient id="bgJ" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient>
               </defs>
-              <g clip-path="url(#r1)">
-                <rect width="100%" height="100%" fill="url(#bg1)"/>
-                <rect x="20" y="18" width="320" height="180" rx="10" fill="#0c1736" stroke="#1b3a78"/>
-                <path d="M70 40 q50-40 120 0 q70 40 120 0 v120 h-240z" fill="#122a58"/>
-                <rect x="250" y="28" width="52" height="52" rx="8" fill="#4aa0ff" stroke="#8ad3ff" stroke-width="3"/>
-                <text x="276" y="60" font-size="22" text-anchor="middle" fill="#0b0b0b" font-weight="900">PP</text>
-                <text x="40" y="54" font-size="18" fill="#cfe1ff" opacity=".9">AUTHENTIC JERSEY</text>
-                <rect x="14" y="14" width="70" height="28" rx="6" fill="url(#gl1)" opacity=".85"/>
-                <text x="49" y="33" font-size="16" text-anchor="middle" font-weight="900" fill="#0b0b0b">PP</text>
-              </g>
+              <rect width="100%" height="100%" fill="url(#bgJ)"/>
+              <rect x="20" y="18" width="320" height="124" rx="10" fill="#0c1736" stroke="#1b3a78"/>
+              <rect x="270" y="26" width="44" height="44" rx="8" fill="#4aa0ff" stroke="#8ad3ff" stroke-width="3"/>
+              <text x="292" y="55" font-size="18" text-anchor="middle" fill="#0b0b0b" font-weight="900">PP</text>
+              <text x="40" y="54" font-size="16" fill="#cfe1ff" opacity=".9">AUTHENTIC JERSEY</text>
             </svg>
           </div>
           <div class="meta">
@@ -141,20 +134,12 @@ a{text-decoration:none;color:inherit}
         <!-- 2) LED Ribbon -->
         <article class="card">
           <div class="media">
-            <svg viewBox="0 0 360 200" role="img" aria-label="LED Ribbon">
-              <defs>
-                <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient>
-                <linearGradient id="gl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd86b"/><stop offset="1" stop-color="#f5c518"/></linearGradient>
-                <clipPath id="r2"><rect x="0" y="0" width="360" height="200" rx="12"/></clipPath>
-              </defs>
-              <g clip-path="url(#r2)">
-                <rect width="100%" height="100%" fill="url(#bg2)"/>
-                <rect x="20" y="80" width="320" height="28" rx="6" fill="#05112a" stroke="#21408a"/>
-                <rect x="20" y="80" width="320" height="28" rx="6" fill="url(#gl2)" opacity=".35"/>
-                <text x="180" y="99" font-size="16" text-anchor="middle" fill="#0b0b0b" font-weight="900">LED RIBBON • LV</text>
-                <rect x="14" y="14" width="70" height="28" rx="6" fill="url(#gl2)" opacity=".85"/>
-                <text x="49" y="33" font-size="16" text-anchor="middle" font-weight="900" fill="#0b0b0b">LV</text>
-              </g>
+            <svg viewBox="0 0 360 160" role="img" aria-label="LED Signage">
+              <defs><linearGradient id="bgL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgL)"/>
+              <rect x="24" y="68" width="312" height="24" rx="6" fill="#05112a" stroke="#21408a"/>
+              <rect x="24" y="68" width="312" height="24" rx="6" fill="#ffd86b" opacity=".35"/>
+              <text x="180" y="85" font-size="14" text-anchor="middle" fill="#0b0b0b" font-weight="900">LED RIBBON • LV</text>
             </svg>
           </div>
           <div class="meta">
@@ -167,20 +152,12 @@ a{text-decoration:none;color:inherit}
         <!-- 3) Pitch-Level -->
         <article class="card">
           <div class="media">
-            <svg viewBox="0 0 360 200" role="img" aria-label="Pitch Level">
-              <defs>
-                <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient>
-                <linearGradient id="gl3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8cffd0"/><stop offset="1" stop-color="#17d3a5"/></linearGradient>
-                <clipPath id="r3"><rect x="0" y="0" width="360" height="200" rx="12"/></clipPath>
-              </defs>
-              <g clip-path="url(#r3)">
-                <rect width="100%" height="100%" fill="url(#bg3)"/>
-                <rect x="0" y="150" width="360" height="30" fill="#0c5a2a"/>
-                <rect x="20" y="154" width="320" height="22" rx="4" fill="#17d3a5" opacity=".9"/>
-                <text x="180" y="170" font-size="13" text-anchor="middle" fill="#0b0b0b" font-weight="900">PITCH-LEVEL SIGNAGE</text>
-                <rect x="14" y="14" width="70" height="28" rx="6" fill="url(#gl3)" opacity=".85"/>
-                <text x="49" y="33" font-size="16" text-anchor="middle" font-weight="900" fill="#0b0b0b">MW</text>
-              </g>
+            <svg viewBox="0 0 360 160" role="img" aria-label="Pitch-Level">
+              <defs><linearGradient id="bgP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgP)"/>
+              <rect x="0" y="118" width="360" height="22" fill="#0c5a2a"/>
+              <rect x="20" y="120" width="320" height="18" rx="4" fill="#17d3a5" opacity=".9"/>
+              <text x="180" y="135" font-size="12" text-anchor="middle" fill="#0b0b0b" font-weight="900">PITCH-LEVEL SIGNAGE</text>
             </svg>
           </div>
           <div class="meta">
@@ -189,29 +166,102 @@ a{text-decoration:none;color:inherit}
             <div class="note">Atlantic Energy Stadium • MLS • Reserve $18,000</div>
           </div>
         </article>
+
+        <!-- 4) In-Ice Logo -->
+        <article class="card">
+          <div class="media">
+            <svg viewBox="0 0 360 160" role="img" aria-label="In-Ice Logo">
+              <defs><linearGradient id="bgI" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgI)"/>
+              <circle cx="180" cy="86" r="42" fill="#e8f3ff" opacity=".9" stroke="#9cc"/>
+              <text x="180" y="90" font-size="22" text-anchor="middle" font-weight="900" fill="#5fb3ff">MB</text>
+            </svg>
+          </div>
+          <div class="meta">
+            <div class="asset">In-Ice Logo</div>
+            <div class="team"><span class="crest">MB</span> Miami Barracudas</div>
+            <div class="note">Ocean Ice Center • NHL • Reserve $19,800</div>
+          </div>
+        </article>
+
+        <!-- 5) Outfield Wall -->
+        <article class="card">
+          <div class="media">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Outfield Wall">
+              <defs><linearGradient id="bgO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgO)"/>
+              <rect x="0" y="112" width="360" height="28" fill="#083a2a"/>
+              <rect x="16" y="116" width="80" height="20" rx="4" fill="#58c04a"/>
+              <rect x="108" y="116" width="100" height="20" rx="4" fill="#2f8a3a"/>
+              <rect x="222" y="116" width="120" height="20" rx="4" fill="#ffe082"/>
+              <text x="180" y="100" font-size="14" text-anchor="middle" fill="#dfe9ff">OUTFIELD WALL SIGNAGE</text>
+            </svg>
+          </div>
+          <div class="meta">
+            <div class="asset">Outfield Wall Signage</div>
+            <div class="team"><span class="crest">PB</span> Portland Beavers</div>
+            <div class="note">Cascade Ballpark • MLB • Reserve $28,900</div>
+          </div>
+        </article>
+
+        <!-- 6) Dasher-Boards -->
+        <article class="card">
+          <div class="media">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Dasher Boards">
+              <defs><linearGradient id="bgD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgD)"/>
+              <rect x="0" y="118" width="360" height="20" fill="#ffffff"/>
+              <rect x="12" y="120" width="80" height="16" fill="#c6a8ff"/>
+              <rect x="104" y="120" width="100" height="16" fill="#9d7cff"/>
+              <rect x="216" y="120" width="130" height="16" fill="#ffe082"/>
+              <rect x="0" y="138" width="360" height="8" fill="#cfe6ff" opacity=".6"/>
+              <text x="180" y="98" font-size="13" text-anchor="middle" fill="#dfe9ff">DASHER-BOARD SIGNAGE</text>
+            </svg>
+          </div>
+          <div class="meta">
+            <div class="asset">Dasher-Board Signage</div>
+            <div class="team"><span class="crest">PG</span> Portland Glaciers</div>
+            <div class="note">Rose Ice Arena • NHL • Reserve $22,750</div>
+          </div>
+        </article>
+
+        <!-- 7) Fixed Signage -->
+        <article class="card">
+          <div class="media">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Fixed Signage">
+              <defs><linearGradient id="bgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgF)"/>
+              <rect x="40" y="62" width="280" height="36" rx="8" fill="#123a6a"/>
+              <text x="180" y="86" font-size="14" text-anchor="middle" fill="#dbe7ff">FIXED SIGNAGE</text>
+            </svg>
+          </div>
+          <div class="meta">
+            <div class="asset">Fixed Signage</div>
+            <div class="team"><span class="crest">LV</span> Las Vegas Vipers</div>
+            <div class="note">Mojave Bank Stadium • NFL • Reserve $31,400</div>
+          </div>
+        </article>
+
+        <!-- 8) Videoboard -->
+        <article class="card">
+          <div class="media">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Videoboard">
+              <defs><linearGradient id="bgV" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102148"/><stop offset="1" stop-color="#07142c"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#bgV)"/>
+              <rect x="48" y="24" width="264" height="100" rx="10" fill="#111" stroke="#333"/>
+              <rect x="56" y="32" width="248" height="84" rx="8" fill="#213a78"/>
+              <text x="180" y="84" font-size="14" text-anchor="middle" fill="#dbe7ff" font-weight="800">CENTER-HUNG VIDEOBOARD</text>
+            </svg>
+          </div>
+          <div class="meta">
+            <div class="asset">Videoboard Signage</div>
+            <div class="team"><span class="crest">PP</span> Portland Pioneers</div>
+            <div class="note">Rose City Arena • NBA • Reserve $38,500</div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
-
-  <!-- Ticker (CSS-only so it always animates) -->
-  <section class="ticker-wrap" aria-label="Recent Activity">
-    <div class="t-title">RECENT ACTIVITY</div>
-    <div class="t-viewport">
-      <div class="t-track">
-        <span class="t-item"><span class="dot"></span> Aurora Health bid $45,000 on Helmet Logo • Portland Lumberjacks (NFL)</span>
-        <span class="t-item"><span class="dot"></span> Beacon Coffee bid $38,500 on Videoboard • Portland Pioneers (NBA)</span>
-        <span class="t-item"><span class="dot"></span> Solarix Energy bid $28,900 on Outfield Wall • Portland Beavers (MLB)</span>
-        <span class="t-item"><span class="dot"></span> Skyline Tech bid $27,300 on Jersey Patch • Las Vegas Outlaws (NBA)</span>
-        <span class="t-item"><span class="dot"></span> NovaCloud bid $16,200 on Pitch-Level • Las Vegas Scorpions (MLS)</span>
-        <!-- duplicate for loop smoothness -->
-        <span class="t-item"><span class="dot"></span> Aurora Health bid $45,000 on Helmet Logo • Portland Lumberjacks (NFL)</span>
-        <span class="t-item"><span class="dot"></span> Beacon Coffee bid $38,500 on Videoboard • Portland Pioneers (NBA)</span>
-        <span class="t-item"><span class="dot"></span> Solarix Energy bid $28,900 on Outfield Wall • Portland Beavers (MLB)</span>
-        <span class="t-item"><span class="dot"></span> Skyline Tech bid $27,300 on Jersey Patch • Las Vegas Outlaws (NBA)</span>
-        <span class="t-item"><span class="dot"></span> NovaCloud bid $16,200 on Pitch-Level • Las Vegas Scorpions (MLS)</span>
-      </div>
-    </div>
-  </section>
 
   <footer class="wrap" style="text-align:center;color:#9fb0cc">
     © 2025 SponsorWins — Visual Preview
